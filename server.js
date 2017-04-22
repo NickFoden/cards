@@ -15,8 +15,8 @@ app.get('/summary', function (req, res){
 	res.sendFile(path.join(__dirname + '/public/summary.html'));
 });
 
-app.get('/end', function (req, res){
-	res.renderHtml(path.join(__dirname + '/public/end.html'));
+app.get('/end-of-cards', function (req, res){
+	res.sendFile(path.join(__dirname + '/public/end-of-cards.html'));
 });
 
 app.get('/new-card', function (req, res){
