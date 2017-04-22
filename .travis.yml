@@ -1,0 +1,9 @@
+language: node_js
+node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: BwWwprRwzgbggatkxhr1NMDsYZjWJg5aS/PU7Y0gP3nkK0SiuwgJnEZWWvFw+j+PEDl6AKDxJxXgZQNSBKxrTZmTvpsA4QsOYmDVTcAVKVCD6RQHt2gvCbIUPKYjhoq+Aci6gA8Y5AnBsyAYdRw5Pg+j/ED9Ol1u8+lWJsY7uHONq1AFZgfbeRk+ts1nQ16RHYx5GVhklmP8lduDKq3mZkpI8fvj6YI5Ar+9l0bgWihzRmI/JGwXED6mMGWMGCDFhum1uBA7b2fdd4P1jBEK1WpKGCsjligYeM9dlzRmLFHTPmhZQpFCug9z9l+fpnXF7V3HDyrN/kwsS/xeV0rFe7KVNJFl/w+jGt/q7A5VizH00cFVnbKgOcxE8XfP5wzaQCBc306i0wNcnDBj90gGxjemo40sAJyyWsnS6JhWsID/lJ9B0Pg1qvbVaAfTlt6jdEPpeuyICQRa8M2K//Nj/fEOE1YQ40CEmWt2XeOlFBY7ZSRqKiuJJUCFTbSJqYYOL0SXOJTKpO/tn9XRAdxB9scZEVW+zSsAnBCOa6ovZPeIxvJjSX5LjGPRTTsk9iiZkZp5ucRRzxS/b37DRccwb50r51I7/zSfqKpCa8VQRkFkqHBmXGRCZLsJazGAsNpBP4Ib7xi46KWn6AbupirpGst12Engg9MBCJ2PjjuaMTk=
+  app: intense-inlet-77790
+  on:
+    repo: NickFoden/cards
