@@ -9,23 +9,23 @@ app.get('/', function (req, res){
 });
 
 app.get('/summary', function (req, res){
-	res.sendFile('/summary.html')
+	res.sendFile(__dirname +'/summary.html')
 });
 
 app.get('/end', function (req, res){
-	res.sendFile('end.html')
+	res.sendFile(__dirname + '/end.html')
 });
 
 app.get('/new-card', function (req, res){
-	res.sendFile('new-card.html')
+	res.sendFile(__dirname + '/new-card.html')
 });
 
 app.get('/sign-up', function (req, res){
-	res.sendFile('sign-up.html')
+	res.sendFile(__dirname + '/sign-up.html')
 });
 
 app.get('/start', function (req, res){
-	res.sendFile('start.html')
+	res.sendFile(__dirname + '/start.html')
 });
 
 
