@@ -4,10 +4,11 @@ const server = require('../server.js');
 
 const should = chai.should();
 const app = server.app;
+
 chai.use(chaiHttp);
 
 
-describe('Cards Test', function(){
+describe('Cards Test Index Page', function(){
 	it('should be alive', function(){
 		chai.request(app)
 		.get('/')
