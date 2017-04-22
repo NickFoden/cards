@@ -8,27 +8,27 @@ var path = require('path');
 exports.app = app;
 
 app.get('/', function (req, res){
-	res.sendFile(path.join('/index.html'));
+	res.sendFile(path.join('/public/index.html'));
 });
 
 app.get('/summary', function (req, res){
-	res.sendFile(path.join(__dirname + '/summary.html'));
+	res.sendFile(path.join(__dirname + '/public/summary.html'));
 });
 
 app.get('/end', function (req, res){
-	res.renderHtml(path.join(__dirname + '/end.html'));
+	res.renderHtml(path.join(__dirname + '/public/end.html'));
 });
 
 app.get('/new-card', function (req, res){
-	res.sendFile(path.join(__dirname + '/new-card.html'));
+	res.sendFile(path.join(__dirname + '/public/new-card.html'));
 });
 
 app.get('/sign-up', function (req, res){
-	res.sendFile(path.join(__dirname + '/sign-up.html'));
+	res.sendFile(path.join(__dirname + '/public/sign-up.html'));
 });
 
 app.get('/start', function (req, res){
-	res.sendFile(path.join(__dirname + '/start.html'));
+	res.sendFile(path.join(__dirname + '/public/start.html'));
 });
 
 
