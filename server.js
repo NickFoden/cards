@@ -5,27 +5,27 @@ app.use(express.static('public'));
 exports.app = app;
 
 app.get('/', function (req, res){
-	res.sendFile('/index.html')
+	res.sendFile(path.join('/index.html'));
 });
 
 app.get('/summary', function (req, res){
-	res.renderHtml(__dirname +'/summary.html')
+	res.sendFile(path.join(__dirname +'/summary.html'));
 });
 
 app.get('/end', function (req, res){
-	res.renderHtml(__dirname + '/end.html')
+	res.renderHtml(path.join(__dirname + '/end.html'));
 });
 
 app.get('/new-card', function (req, res){
-	res.sendFile(__dirname + '/new-card.html')
+	res.sendFile(path.join(__dirname + '/new-card.html'));
 });
 
 app.get('/sign-up', function (req, res){
-	res.sendFile(__dirname + '/sign-up.html')
+	res.sendFile(path.join(__dirname + '/sign-up.html'));
 });
 
 app.get('/start', function (req, res){
-	res.sendFile(__dirname + '/start.html')
+	res.sendFile(path.join(__dirname + '/start.html'));
 });
 
 

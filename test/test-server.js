@@ -50,7 +50,7 @@ describe('Cards Test Index Page', function(){
 		});
 	});
 
-	it('sumary page exists', function(){
+	it('summary page exists', function(){
 		chai.request(app)
 		.get('/summary')
 		.end(function(err, res){
