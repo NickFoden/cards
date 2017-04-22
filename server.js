@@ -7,3 +7,7 @@ app.use(express.static('public'));
 app.listen(process.env.PORT || 8080);
 
 exports.app = app;
+
+app.get('/end', function (req, res){
+	res.send('end')
+});
