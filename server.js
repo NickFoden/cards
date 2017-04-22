@@ -9,11 +9,11 @@ app.get('/', function (req, res){
 });
 
 app.get('/summary', function (req, res){
-	res.sendFile(__dirname +'/summary.html')
+	res.renderHtml(__dirname +'/summary.html')
 });
 
 app.get('/end', function (req, res){
-	res.sendFile(__dirname + '/end.html')
+	res.renderHtml(__dirname + '/end.html')
 });
 
 app.get('/new-card', function (req, res){

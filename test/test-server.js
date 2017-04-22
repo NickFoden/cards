@@ -4,6 +4,7 @@ const server = require('../server.js');
 
 const should = chai.should();
 const app = server.app;
+const url = require('url');
 
 chai.use(chaiHttp);
 
