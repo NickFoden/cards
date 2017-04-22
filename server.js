@@ -1,35 +1,33 @@
-// Main Server App
-
 var express = require('express');
 var app = express();
+app.use(express.static('public'));
 
 exports.app = app;
 
 app.get('/', function (req, res){
-	res.send('index')
+	res.sendFile('/index.html')
 });
 
 app.get('/summary', function (req, res){
-	res.send('summary')
+	res.sendFile('summary')
 });
 
 app.get('/end', function (req, res){
-	res.send('end')
+	res.sendFile('end')
 });
 
-
 app.get('/new-card', function (req, res){
-	res.send('new-card')
+	res.sendFile('new-card')
 });
 
 app.get('/sign-up', function (req, res){
-	res.send('sign-up')
+	res.sendFile('sign-up')
 });
 
 app.get('/start', function (req, res){
-	res.send('start')
+	res.sendFile('start')
 });
 
 
-app.use(express.static('public'));
+
 app.listen(process.env.PORT || 8080);
