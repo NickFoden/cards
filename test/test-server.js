@@ -1,34 +1,20 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
+const server = require('../server.js');
+
 const should = chai.should();
-const {PORT, DATABASE_URL} = require('../config');
-
+const app = server.app;
 chai.use(chaiHttp);
-
-const expect = require('chai').expect;
-
-const {closeServer, runServer, app} =  require('../server');
 
 
 describe('Cards Test', function(){
-	before(function(){
-		return runServer(DATABASE_URL);
-	});
-	after(function(){
-		return closeServer();
-	});
-
-	describe('Check Server', function(){
-		it('should see if server is running', function(){
-		chai.request('/')
+	it('should be alive', function(){
+		chai.request(app)
 		.get('/')
-		.then(res => {
-			if (res.status >= 200) {
-				return res;
-				}
-			})
+		.end(function(err, res){
+			res.should.have.status(200);
+			res.should.be.html;
+			done();
 		});
 	});
-
-
 });
