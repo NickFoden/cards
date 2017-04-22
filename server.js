@@ -1,6 +1,9 @@
 var express = require('express');
 var app = express();
+var router = express.Router();
 app.use(express.static('public'));
+
+var path = require('path');
 
 exports.app = app;
 
@@ -9,7 +12,7 @@ app.get('/', function (req, res){
 });
 
 app.get('/summary', function (req, res){
-	res.sendFile(path.join(__dirname +'/summary.html'));
+	res.sendFile(path.join(__dirname + '/summary.html'));
 });
 
 app.get('/end', function (req, res){
