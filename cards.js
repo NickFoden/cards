@@ -14,3 +14,12 @@ var cards_js = {
         }
  ]
 };
+
+function displayCard (data){
+	resultElement += `<div class ="card">`;
+	resultElement += `<h2>${data.card_q}</h2>`;
+	resultElement += `</div>`
+
+	$('.displayCard').prepend(resultElement);
+};
+
