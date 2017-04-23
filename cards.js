@@ -23,3 +23,6 @@ function displayCard (data){
 	$('.displayCard').prepend(resultElement);
 };
 
+let i = 1;
+
+displayCard(cards_js[i]);
