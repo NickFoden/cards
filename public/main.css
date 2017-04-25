@@ -5,3 +5,7 @@
 .index-header {
 	margin-left: 100px;
 }
+
+.display-card {
+	visibility: hidden;
+}

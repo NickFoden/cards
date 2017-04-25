@@ -25,4 +25,4 @@ function displayCard (data){
 
 let i = 1;
 
-displayCard(cards_js[i]);
+displayCard(cards_js.cards[i]);
