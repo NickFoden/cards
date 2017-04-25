@@ -25,9 +25,9 @@ function displayCard(data){
 
 let i = 1;
 
-//function currentCard(cards_js){
+/*function currentCard(cards_js){
 	cards_js.cards[i];
-};//
+};*/
 
 var currentCard = cards_js.cards[i];
 
