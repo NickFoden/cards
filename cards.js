@@ -15,14 +15,26 @@ var cards_js = {
  ]
 };
 
-function displayCard (data){
-	resultElement += `<div class ="card">`;
+function displayCard(data){
+	resultElement += `<div class="card">`;
 	resultElement += `<h2>${data.card_q}</h2>`;
 	resultElement += `</div>`
 
-	$('.displayCard').prepend(resultElement);
+	$('.display-card').append(resultElement);
 };
 
 let i = 1;
 
-displayCard(cards_js.cards[i]);
+function currentCard(cards_js){
+	return cards_js.cards[i];
+};
+
+$("#start-button").on('click', function(){
+   displayStart();
+   displayCard(currentCard);
+};
+
+function displayStart(start){
+	$("#container").removeClass("hidden");
+};
+
