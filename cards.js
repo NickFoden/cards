@@ -20,13 +20,19 @@ function displayCard(data){
 	resultElement += `<h2>${data.card_q}</h2>`;
 	resultElement += `</div>`
 
-	$('.display-card').append(resultElement);
+	$('#display-card').append(resultElement);
 };
 
 let i = 1;
 
-function currentCard(cards_js){
-	return cards_js.cards[i];
+//function currentCard(cards_js){
+	cards_js.cards[i];
+};//
+
+var currentCard = cards_js.cards[i];
+
+function displayStart(start){
+	$("#container").removeClass("hidden");
 };
 
 $("#start-button").on('click', function(){
@@ -34,7 +40,5 @@ $("#start-button").on('click', function(){
    displayCard(currentCard);
 };
 
-function displayStart(start){
-	$("#container").removeClass("hidden");
-};
+
 
