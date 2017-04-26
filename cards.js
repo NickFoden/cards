@@ -13,6 +13,28 @@ var cards_js = [
         }
  ];
 
+let used = [];
+
+const getCard = () => {
+  let notUsed = true;
+  while (notUsed && used.length < cards_js.length) {
+    var index = Math.floor(Math.random() * arr.length);
+    if (used.indexOf(index) != -1) {
+      console.log("conflict");
+    } else {
+      used.push(index);
+      notUsed = false;
+    }
+  }
+  if (used.length === cards_js.length) {
+    return "All cards used"
+  } else {
+    return cards_js[index];
+  }
+}
+
+var currentCard = getCard(cards_js);
+
 function displayCardQuestion(data){
 	resultElement += `<div class="card">`;
 	resultElement += `<h2>${data.question}</h2>`;
@@ -21,13 +43,8 @@ function displayCardQuestion(data){
 	$('#display-card').append(resultElement);
 };
 
-
-let i = 1;
-
-var currentCard = cards_js[i];
-
 function displayStart(start){
-	$("#container").removeClass("hidden");
+	$("#display-card").removeClass("hidden");
 };
 
 $("#start-button").on('click', function(){
