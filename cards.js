@@ -3,13 +3,22 @@ var cards_js = [
             "id":"1",
             "question": "const",
             "answer": "Declares a read-only named constant",
+            "example": "const id = 15",
             "reference":"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Basics"
         },
         {
         	"id":"2",
         	"question":"var",
         	"answer":"Declares a variable, optionally initializing it to a value.",
+            "example":"var x = 5",
         	"reference":"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Basics"
+        },
+         {
+            "id":"3",
+            "question":"indexOf() method",
+            "answer":"Returns the first index at which a given element can be found in the array, or -1 if it is not present.",
+            "example": "var array = [2, 9, 9] array.indexOf(2) / 0  array.indexOf(7)  / -1",
+            "reference":"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Basics"
         }
  ];
 
@@ -31,7 +40,7 @@ const getCard = () => {
   } else {
     return cards_js[index];
   }
-}
+};
 
 var currentCard = getCard(cards_js);
 
@@ -43,14 +52,14 @@ function displayCardQuestion(data){
 	$('#display-card').append(resultElement);
 };
 
-function displayStart(start){
-	$("#display-card").removeClass("hidden");
-};
+/*function displayStart(start){
+	$("#display-card").remove();
+};*/
 
 $("#start-button").on('click', function(){
-   displayStart();
-   displayCardQuestion(currentCard);
-};
+    $("#display-card").remove();
+    displayCardQuestion(currentCard);
+});
 
 
 

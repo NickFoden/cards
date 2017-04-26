@@ -1,5 +1,7 @@
 * {
 	background: #ADD8E6;
+	font-family: "Helvetica", sans-serif;
+	text-decoration: none;
 }
 
 .index-header {
@@ -8,4 +10,19 @@
 
 .hidden {
 	visibility: hidden;
+}
+
+.container {
+	width: 200px;
+	height: 100px;
+	padding: 50px;
+	background-color: white;
+	margin: left 200px;
+}
+
+.display-card {
+	width: 250px;
+	height: 125px;
+	padding:25px;
+	background-color: #35ea99;
 }
