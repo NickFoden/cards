@@ -25,8 +25,8 @@
 	margin: auto;
 }
 .display-card-question {
-	width: 150px;
-	height: 75px;
+	width: auto;
+	height: 100px;
 	padding:25px;
 	border: 1px solid #3a99a8;
 	background-color: #35ea99;
@@ -34,8 +34,8 @@
 }
 
 .display-card-answer {
-	width: 150px;
-	height: 75px;
+	width: auto;
+	height: 100px;
 	padding:25px;
 	border: 1px solid #3a99a8;
 	background-color: #35ea99;

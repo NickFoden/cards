@@ -1,26 +1,33 @@
 var cards_js = [
         {
-            "id":"1",
-            "question":"const",
-            "answer": "Declares a read-only named constant",
-            "example": "const id = 15",
-            "reference":"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Basics"
+          "id":"1",
+          "question":"const",
+          "answer": "Declares a read-only named constant",
+          "example": "const id = 15",
+          "reference":"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Basics"
         },
         {
         	"id":"2",
         	"question":"var",
         	"answer":"Declares a variable, optionally initializing it to a value.",
-            "example":"var x = 5",
+          "example":"var x = 5",
         	"reference":"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Basics"
         },
          {
-            "id":"3",
-            "question":"indexOf() method",
-            "answer":"Returns the first index at which a given element can be found in the array, or -1 if it is not present.",
-            "example": "var array = [2, 9, 9] array.indexOf(2) / 0  array.indexOf(7)  / -1",
-            "reference":"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Basics"
+          "id":"3",
+          "question":"indexOf() method",
+          "answer":"Returns the first index at which a given element can be found in the array, or -1 if it is not present.",
+          "example": "var array = [2, 9, 9] array.indexOf(2) / 0  array.indexOf(7)  / -1",
+          "reference":"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Basics"
         }
  ];
+
+let Cards = {};
+
+Cards.create = function(card){
+  //Add submit and then method to make cards
+
+};
 
 let used = [];
 
@@ -41,7 +48,7 @@ var getCard = () => {
 };
 
 var currentCard = getCard(cards_js);
-
+ 
 function displayCardQuestion(data){
 	let resultElement = 
     `<div class="display-card-question">
@@ -63,7 +70,7 @@ function displayCardAnswer(data){
 }
 
 function displayEnd(data){
-  let resultElement = `<div class="end-card"></div>`;
+  let resultElement = `<div class="end-card">You have reached the end</div>`;
 
    $('#display').html(resultElement);  
 };
