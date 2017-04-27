@@ -1,8 +1,8 @@
 * {
-	background: #ADD8E6;
 	font-family: "Helvetica", sans-serif;
 	text-decoration: none;
 }
+
 
 .index-header {
 	margin-left: 100px;
@@ -13,17 +13,39 @@
 }
 
 .container {
-	width: 200px;
-	height: 100px;
+	width: 300px;
+	height: 200px;
 	padding: 50px;
-	background-color: white;
-	margin: left 200px;
-}
+	background-color: #8fe8be;
+	margin: auto;
+}	
 
-.display-card {
-	width: 250px;
-	height: 125px;
+.p {
+	width: auto;
+	margin: auto;
+}
+.display-card-question {
+	width: 150px;
+	height: 75px;
 	padding:25px;
 	border: 1px solid #3a99a8;
 	background-color: #35ea99;
+	color: #f7f7f7;
 }
+
+.display-card-answer {
+	width: 150px;
+	height: 75px;
+	padding:25px;
+	border: 1px solid #3a99a8;
+	background-color: #35ea99;
+	color: #f7f7f7;
+}
+
+#start-button{
+	background-color: white;
+	border-radius: 4px;
+	padding: 10px;
+	margin: auto;
+}
+

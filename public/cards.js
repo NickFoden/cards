@@ -24,10 +24,10 @@ var cards_js = [
 
 let used = [];
 
-const getCard = () => {
+var getCard = () => {
   let notUsed = true;
   while (notUsed && used.length < cards_js.length) {
-    var index = Math.floor(Math.random() * arr.length);
+    var index = Math.floor(Math.random() * cards_js.length);
     if (used.indexOf(index) != -1) {
       console.log("conflict");
     } else {
@@ -47,14 +47,16 @@ var currentCard = getCard(cards_js);
 function displayCardQuestion(data){
 	resultElement += `<div class="display-card">`;
 	resultElement += `<h2>${data.question}</h2>`;
+    resultElement += `<button id="answer-button">Flip It</button>`
 	resultElement += `</div>`;
 
 	$('#display-card').append(resultElement);
 };
 
-function displayCardQuestion(data){
+function displayCardAnswer(data){
     resultElement += `<div class ="display-card">`;
     resultElement += `<h2>${data.answer}</h2>`;
+    resultElement += `<button id="next-card">Next</button>`;
     resultElement += `</div>`;
 
     $('#display-card').append(resultElement);
@@ -69,7 +71,14 @@ $("#start-button").on('click', function(){
     displayCardQuestion(currentCard);
 });
 
-$("#")
+$("#answer-button").on('click', function(){
+    displayCardAnswer(currentCard);
+});
+
+$("#next-card").on('click', function(){
+    getCard(cards_js);
+    displayCardQuestion(currentCard);
+});
 
 
 
