@@ -1,7 +1,7 @@
 var cards_js = [
         {
             "id":"1",
-            "question": "const",
+            "question":"const",
             "answer": "Declares a read-only named constant",
             "example": "const id = 15",
             "reference":"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Basics"
@@ -28,15 +28,13 @@ var getCard = () => {
   let notUsed = true;
   while (notUsed && used.length < cards_js.length) {
     var index = Math.floor(Math.random() * cards_js.length);
-    if (used.indexOf(index) != -1) {
-      console.log("conflict");
-    } else {
+    if (used.indexOf(index) === -1) {
       used.push(index);
       notUsed = false;
     }
   }
   if (used.length === cards_js.length) {
-    return "All cards used"
+    return false;
   } else {
     return cards_js[index];
   }
@@ -45,39 +43,49 @@ var getCard = () => {
 var currentCard = getCard(cards_js);
 
 function displayCardQuestion(data){
-	resultElement += `<div class="display-card">`;
-	resultElement += `<h2>${data.question}</h2>`;
-    resultElement += `<button id="answer-button">Flip It</button>`
-	resultElement += `</div>`;
+	let resultElement = 
+    `<div class="display-card">
+      <h2>${data.question}</h2>
+      <button id="answer-button">Flip It</button>
+    </div>`;
 
-	$('#display-card').append(resultElement);
+	$('#display').html(resultElement);
 };
 
 function displayCardAnswer(data){
-    resultElement += `<div class ="display-card">`;
-    resultElement += `<h2>${data.answer}</h2>`;
-    resultElement += `<button id="next-card">Next</button>`;
-    resultElement += `</div>`;
+    let resultElement = 
+      `<div class="display-card">
+        <h2>${data.answer}</h2>
+        <button id="next-card">Next</button>
+      </div>`;
 
-    $('#display-card').append(resultElement);
+    $('#display').html(resultElement);
 }
 
-/*function displayStart(start){
-	$("#display-card").remove();
-};*/
+function displayEnd(data){
+  let resultElement = `<div class="end-card"></div>`;
+
+   $('#display').html(resultElement);  
+};
 
 $("#start-button").on('click', function(){
-    $("#display-card").removeClass("hidden");
+    $(".start-text").hide();
     displayCardQuestion(currentCard);
 });
 
-$("#answer-button").on('click', function(){
+$(document).on('click', "#answer-button", function(){
     displayCardAnswer(currentCard);
 });
 
-$("#next-card").on('click', function(){
-    getCard(cards_js);
-    displayCardQuestion(currentCard);
+$(document).on('click', "#next-card", function(){
+    currentCard = getCard(cards_js);
+    if (currentCard) {
+      displayCardQuestion(currentCard);
+    }
+    else {
+      displayEnd();
+    }
+    
 });
 
 
