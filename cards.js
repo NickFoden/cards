@@ -47,10 +47,18 @@ var currentCard = getCard(cards_js);
 function displayCardQuestion(data){
 	resultElement += `<div class="display-card">`;
 	resultElement += `<h2>${data.question}</h2>`;
-	resultElement += `</div>`
+	resultElement += `</div>`;
 
 	$('#display-card').append(resultElement);
 };
+
+function displayCardQuestion(data){
+    resultElement += `<div class ="display-card">`;
+    resultElement += `<h2>${data.answer}</h2>`;
+    resultElement += `</div>`;
+
+    $('#display-card').append(resultElement);
+}
 
 /*function displayStart(start){
 	$("#display-card").remove();
@@ -60,6 +68,8 @@ $("#start-button").on('click', function(){
     $("#display-card").removeClass("hidden");
     displayCardQuestion(currentCard);
 });
+
+$("#")
 
 
 
