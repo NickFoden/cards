@@ -45,7 +45,7 @@ const getCard = () => {
 var currentCard = getCard(cards_js);
 
 function displayCardQuestion(data){
-	resultElement += `<div class="card">`;
+	resultElement += `<div class="display-card">`;
 	resultElement += `<h2>${data.question}</h2>`;
 	resultElement += `</div>`
 
@@ -57,7 +57,7 @@ function displayCardQuestion(data){
 };*/
 
 $("#start-button").on('click', function(){
-    $("#display-card").remove();
+    $("#display-card").removeClass("hidden");
     displayCardQuestion(currentCard);
 });
 
