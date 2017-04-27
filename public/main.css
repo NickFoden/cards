@@ -42,6 +42,15 @@
 	color: #f7f7f7;
 }
 
+.end-card {
+	width: 150px;
+	height: 75px;
+	padding:25px;
+	border: 1px solid #3a99a8;
+	background-color: #35ea99;
+	color: #f7f7f7;
+}
+
 #start-button{
 	background-color: white;
 	border-radius: 4px;
