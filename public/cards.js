@@ -44,7 +44,7 @@ var currentCard = getCard(cards_js);
 
 function displayCardQuestion(data){
 	let resultElement = 
-    `<div class="display-card">
+    `<div class="display-card-question">
       <h2>${data.question}</h2>
       <button id="answer-button">Flip It</button>
     </div>`;
@@ -54,7 +54,7 @@ function displayCardQuestion(data){
 
 function displayCardAnswer(data){
     let resultElement = 
-      `<div class="display-card">
+      `<div class="display-card-answer">
         <h2>${data.answer}</h2>
         <button id="next-card">Next</button>
       </div>`;
