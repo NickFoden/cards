@@ -60,12 +60,14 @@
 
 #answer-button{
 	position: relative;
-	top:;
-	left:;
+	top: 20px;
+	left: 20px;
 
 }
 
 #next-card{
-
+	position: relative;
+	top: 20px;
+	left: 20px;
 }
 
