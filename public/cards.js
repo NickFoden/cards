@@ -63,13 +63,14 @@ function displayCardAnswer(data){
       `<div class="display-card-answer">
       <h2><a href="${data.reference}" target="_blank">${data.answer}</a></h2>
       </div><button id="next-card">Next</button>`;
-    $('#answer-button').addClass(".hidden");
+    
+    $('#answer-button').hide();
     $('#display').append(resultElement);
 }
 
 function displayEnd(data){
   let resultElement = `<div class="end-card">You have reached the end</div>
-                        <button id="start-over">Start over</button>`;
+                        <button id="start-over" onclick="location.href='start.html'">Start over</button>`;
 
    $('#display').html(resultElement);  
 };
@@ -94,9 +95,15 @@ $(document).on('click', "#next-card", function(){
     
 });
 
-$(document).on('click', "#start-over", function(){
-    let used = [];
-    currentCard = getCard(cards_js);
+/*$(document).on('click', "#start-over", function(){
+  let used= [];
     displayCardQuestion(currentCard);
-});
+
+});*/
+
+//END
+
+
+
+
 
