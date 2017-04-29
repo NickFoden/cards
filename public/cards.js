@@ -75,6 +75,24 @@ function displayEnd(data){
    $('#display').html(resultElement);  
 };
 
+
+
+function addNewCard(data){
+  var newCard = {};
+  if(data.question){
+    newCard.id = (cards_js.length +1)
+    newCard.question = data.question;
+    newCard.answer = data.answer;
+    newCard.example = data.example;
+    newCard.reference = data.reference;
+
+    cards_js.push(newCard);
+  }
+}
+
+
+
+
 $(document).on('click', "#start-button", function(){
     $(".start-text").hide();
     displayCardQuestion(currentCard);
@@ -93,6 +111,10 @@ $(document).on('click', "#next-card", function(){
       displayEnd();
     }
     
+});
+
+$(document).on('click', "#new-card-submit", function(){
+    addNewCard('new-card-form');
 });
 
 /*$(document).on('click', "#start-over", function(){

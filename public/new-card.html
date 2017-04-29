@@ -7,14 +7,19 @@
 <body>
 	<h1>Create a new card</h1>
 	<form id="new-card-form">
-		<input type="radio" name="difficulty" value="easy">Greenhorn</br>
-		<input type="radio" name="difficulty" value="mediumn">Boatswain</br>
-		<input type="radio" name="difficulty" value="hard">20X Ninja</br>
-		Question:<br>
-		<input type="text" name="question"><br>
-		Answer:<br>
-		<input type="text" name="answer"><br>
-		<input type="submit" value="Submit" id="new-card-submit">
+		
+		<label for="question">Question</label>
+		<input type="text" placeholder="js method" name="question" required/>
+		<label for="answer">Answer</label>
+		<input type="text" placeholder="short answer" name="answer" required/>
+		<label for="answer">Example</label>
+		<input type="text" placeholder="brief example" name="example" required/>
+		<label for="answer">Reference</label>
+		<input type="text" placeholder="link to reference" name="reference" required/>
+		<button type="submit" value="Submit" id="new-card-submit">
 	</form>
+
+	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  	<script type="text/javascript" src="cards.js"></script>	
 </body>
 </html>
