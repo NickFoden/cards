@@ -30,6 +30,13 @@ html {
 	margin: auto;
 }	
 
+.new-card-container{
+margin-left: 75px;
+}
+.new-card-header{
+	margin-left: 100px;
+}
+
 .p {
 	width: auto;
 	margin: auto;
