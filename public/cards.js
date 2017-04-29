@@ -26,7 +26,7 @@ let used = [];
 
 var getCard = () => {
   let notUsed = true;
-  while (notUsed && used.length <= cards_js.length) {
+  while (notUsed && used.length < cards_js.length) {
     var index = Math.floor(Math.random() * cards_js.length);
     if (used.indexOf(index) === -1) {
       used.push(index);
@@ -59,7 +59,7 @@ function displayCardAnswer(data){
     
     $('#answer-button').hide();
     $('#display').append(resultElement);
-}
+};
 
 function displayEnd(data){
   let resultElement = `<div class="end-card">You have reached the end</div>
