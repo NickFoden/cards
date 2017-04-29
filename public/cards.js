@@ -22,18 +22,18 @@ var cards_js = [
         }
  ];
 
-let Cards = {};
+/*let Cards = {};
 
 Cards.create = function(card){
   //Add submit and then method to make cards
 
-};
+};*/
 
 let used = [];
 
 var getCard = () => {
   let notUsed = true;
-  while (notUsed && used.length < cards_js.length) {
+  while (notUsed && used.length <= cards_js.length) {
     var index = Math.floor(Math.random() * cards_js.length);
     if (used.indexOf(index) === -1) {
       used.push(index);
@@ -53,8 +53,7 @@ function displayCardQuestion(data){
 	let resultElement = 
     `<div class="display-card-question">
       <h2>${data.question}</h2>
-      <button id="answer-button">Flip It</button>
-    </div>`;
+      </div><button id="answer-button">Flip It</button>`;
 
 	$('#display').html(resultElement);
 };
@@ -62,20 +61,20 @@ function displayCardQuestion(data){
 function displayCardAnswer(data){
     let resultElement = 
       `<div class="display-card-answer">
-        <h2>${data.answer}</h2>
-        <button id="next-card">Next</button>
-      </div>`;
-
-    $('#display').html(resultElement);
+      <h2><a href="${data.reference}" target="_blank">${data.answer}</a></h2>
+      </div><button id="next-card">Next</button>`;
+    $('#answer-button').addClass(".hidden");
+    $('#display').append(resultElement);
 }
 
 function displayEnd(data){
-  let resultElement = `<div class="end-card">You have reached the end</div>`;
+  let resultElement = `<div class="end-card">You have reached the end</div>
+                        <button id="start-over">Start over</button>`;
 
    $('#display').html(resultElement);  
 };
 
-$("#start-button").on('click', function(){
+$(document).on('click', "#start-button", function(){
     $(".start-text").hide();
     displayCardQuestion(currentCard);
 });
@@ -95,5 +94,9 @@ $(document).on('click', "#next-card", function(){
     
 });
 
-
+$(document).on('click', "#start-over", function(){
+    let used = [];
+    currentCard = getCard(cards_js);
+    displayCardQuestion(currentCard);
+});
 
