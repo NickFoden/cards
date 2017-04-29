@@ -22,13 +22,6 @@ var cards_js = [
         }
  ];
 
-/*let Cards = {};
-
-Cards.create = function(card){
-  //Add submit and then method to make cards
-
-};*/
-
 let used = [];
 
 var getCard = () => {
@@ -75,12 +68,10 @@ function displayEnd(data){
    $('#display').html(resultElement);  
 };
 
-
-
 function addNewCard(data){
   var newCard = {};
   if(data.question){
-    newCard.id = (cards_js.length +1)
+    newCard.id = (cards_js.length + 1)
     newCard.question = data.question;
     newCard.answer = data.answer;
     newCard.example = data.example;
@@ -89,9 +80,6 @@ function addNewCard(data){
     cards_js.push(newCard);
   }
 }
-
-
-
 
 $(document).on('click', "#start-button", function(){
     $(".start-text").hide();
@@ -114,7 +102,8 @@ $(document).on('click', "#next-card", function(){
 });
 
 $(document).on('click', "#new-card-submit", function(){
-    addNewCard('new-card-form');
+    addNewCard('#new-card-form');
+    console.log(newCard);
 });
 
 /*$(document).on('click', "#start-over", function(){
@@ -122,6 +111,14 @@ $(document).on('click', "#new-card-submit", function(){
     displayCardQuestion(currentCard);
 
 });*/
+
+
+/*let Cards = {};
+
+Cards.create = function(card){
+  //Add submit and then method to make cards
+
+};*/
 
 //END
 
