@@ -24,6 +24,7 @@ var cards_js = [
 
 let used = [];
 
+
 var getCard = () => {
   let notUsed = true;
   while (notUsed && used.length < cards_js.length) {
@@ -33,7 +34,7 @@ var getCard = () => {
       notUsed = false;
     }
   }
-  if (used.length === cards_js.length) {
+  if ((used.length - 1) === cards_js.length) {
     return false;
   } else {
     return cards_js[index];
@@ -118,8 +119,3 @@ Cards.create = function(card){
 };*/
 
 //END
-
-
-
-
-

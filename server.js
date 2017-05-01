@@ -7,7 +7,7 @@ var path = require('path');
 
 exports.app = app;
 
-app.get('/', function (req, res){
+/*app.get('/', function (req, res){
 	res.sendFile(path.join(__dirnname + '/public/index.html'));
 });
 
@@ -29,7 +29,7 @@ app.get('/sign-up', function (req, res){
 
 app.get('/start', function (req, res){
 	res.sendFile(path.join(__dirname + '/public/start.html'));
-});
+});*/
 
 
 app.listen(process.env.PORT || 8080);
