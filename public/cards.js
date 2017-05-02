@@ -1,3 +1,7 @@
+const {PORT, DATABASE_URL} = require('/server.js');
+const {card} = require('./models.js');
+
+
 var cards_js = [
         {
           "id":"1",
