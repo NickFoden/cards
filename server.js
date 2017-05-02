@@ -46,6 +46,8 @@ app.post('/cards', (req, res) => {
     });
 });
 
+let server;
+
 function runServer(databaseUrl=DATABASE_URL, port=PORT){
 
 	return new Promise((resolve, reject) => {
@@ -65,7 +67,7 @@ function runServer(databaseUrl=DATABASE_URL, port=PORT){
   	});
 }
 
-function closeServer() {
+function stopServer() {
   return mongoose.disconnect().then(() => {
      return new Promise((resolve, reject) => {
        console.log('Closing server');
@@ -79,4 +81,7 @@ function closeServer() {
   });
 }
 
-module.exports = {app, runServer, stopServer},
+if (require.main === module) {
+  runServer().catch(err => console.error(err));
+};
+module.exports = {app, runServer, stopServer};
