@@ -121,18 +121,6 @@ $(document).on('click', "#summary-button", function(){
   $('#sumary-button').addClass('.hidden');
   displaySummary(cards_js);
 });
-/*$(document).on('click', "#start-over", function(){
-  let used= [];
-    displayCardQuestion(currentCard);
 
-});*/
-
-
-/*let Cards = {};
-
-Cards.create = function(card){
-  //Add submit and then method to make cards
-
-};*/
 
 //END

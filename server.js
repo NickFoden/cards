@@ -1,45 +1,82 @@
-var express = require('express');
-var app = express();
-var router = express.Router();
-app.use(express.static('public'));
-
+const express = require('express');
+const {PORT, DATABASE_URL} = require('./config.js');
 const mongoose = require('mongoose');
 
+const app = express();
+const router = express.Router();
+
+app.use(express.static('public'));
 mongoose.Promise = global.Promise;
 
-var path = require('path');
 
-exports.app = app;
-
-exports.DATABASE_URL = process.env.DATABASE_URL ||
-						global.DATABASE_URL ||
-						'mongodb://localhost/cards-db';
-
-app.listen(process.env.PORT || 8080);
-
-/*app.get('/', function (req, res){
-	res.sendFile(path.join(__dirnname + '/public/index.html'));
+app.get('/cards', (req, res) => {
+  Card
+    .find()
+    .exec()
+    .then(cards => {
+      res.status(200).json(cards);
+    })
+    .catch(
+      err => {
+        console.error(err);
+        res.status(500).json({message: 'Internal server error'});
+    });
 });
 
-app.get('/summary', function (req, res){
-	res.sendFile(path.join(__dirname + '/public/summary.html'));
+app.post('/cards', (req, res) => {
+	const requiredFields = ['question', 'answer', 'reference'];
+	for (let i=0; i<requiredFields.length; i++) {
+		const field = requiredFields[i];
+		if (!(field in req.body)) {
+			const message = `Missing \`${field}\` in request body`;
+			console.error(message);
+			return res.status(400).send(message);
+    }
+  }
+	Card
+    .create({
+      question: req.body.question,
+      answer: req.body.answer,
+      reference: req.body.reference})
+    .then(
+      card => res.status(201))
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({message: 'Internal server error'});
+    });
 });
 
-app.get('/end-of-cards', function (req, res){
-	res.sendFile(path.join(__dirname + '/public/end-of-cards.html'));
-});
+function runServer(databaseUrl=DATABASE_URL, port=PORT){
 
-app.get('/new-card', function (req, res){
-	res.sendFile(path.join(__dirname + '/public/new-card.html'));
-});
+	return new Promise((resolve, reject) => {
+    	mongoose.connect(databaseUrl, err => {
+			if (err) {
+				return reject(err);
+			}
+			server = app.listen(port, () => {
+				console.log(`Your app is listening on port ${port}`);
+				resolve();
+	      	})
+	      	.on('error', err => {
+	        	mongoose.disconnect();
+	        	reject(err);
+      		});
+    	});
+  	});
+}
 
-app.get('/sign-up', function (req, res){
-	res.sendFile(path.join(__dirname + '/public/sign-up.html'));
-});
+function closeServer() {
+  return mongoose.disconnect().then(() => {
+     return new Promise((resolve, reject) => {
+       console.log('Closing server');
+       server.close(err => {
+           if (err) {
+               return reject(err);
+           }
+           resolve();
+       });
+     });
+  });
+}
 
-app.get('/start', function (req, res){
-	res.sendFile(path.join(__dirname + '/public/start.html'));
-});*/
-
-
-//END
+module.exports = {app, runServer, stopServer},
