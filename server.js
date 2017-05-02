@@ -3,9 +3,19 @@ var app = express();
 var router = express.Router();
 app.use(express.static('public'));
 
+const mongoose = require('mongoose');
+
+mongoose.Promise = global.Promise;
+
 var path = require('path');
 
 exports.app = app;
+
+exports.DATABASE_URL = process.env.DATABASE_URL ||
+						global.DATABASE_URL ||
+						'mongodb://localhost/cards-db';
+
+app.listen(process.env.PORT || 8080);
 
 /*app.get('/', function (req, res){
 	res.sendFile(path.join(__dirnname + '/public/index.html'));
@@ -32,4 +42,4 @@ app.get('/start', function (req, res){
 });*/
 
 
-app.listen(process.env.PORT || 8080);
+//END
