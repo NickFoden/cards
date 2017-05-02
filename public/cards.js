@@ -1,6 +1,5 @@
-const {PORT, DATABASE_URL} = require('/server.js');
-const {card} = require('./models.js');
-
+//const {PORT, DATABASE_URL} = require('./server.js');
+//const {card} = require('./models.js');
 
 var cards_js = [
         {
@@ -68,15 +67,25 @@ function displayCardAnswer(data){
 
 function displayEnd(data){
   let resultElement = `<div class="end-card">You have reached the end</div>
-                        <button id="start-over" onclick="location.href='start.html'">Start over</button>`;
+                        <button id="start-over" onclick="location.href='start.html'">Start over</button>
+                        <button id="index" onclick="location.href='index.html'">Index</button>`;
 
    $('#display').html(resultElement);  
 };
+
+function displaySummary(data){
+ for (i = 0; i <= data.length; i++){
+  let summary = `<li>${data[i].question}</li>`;
+
+  $('.cards-summary').append(summary);
+ }
+}
 
 $(document).on('click', "#start-button", function(){
     $(".start-text").hide();
     displayCardQuestion(currentCard);
 });
+
 
 $(document).on('click', "#answer-button", function(){
     displayCardAnswer(currentCard);
@@ -108,6 +117,10 @@ $(document).on('submit', "#new-card-form", function(e){
     cards_js.push(newCard);
 });
 
+$(document).on('click', "#summary-button", function(){
+  $('#sumary-button').addClass('.hidden');
+  displaySummary(cards_js);
+});
 /*$(document).on('click', "#start-over", function(){
   let used= [];
     displayCardQuestion(currentCard);
