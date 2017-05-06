@@ -1,11 +1,14 @@
 const express = require('express');
 const {PORT, DATABASE_URL} = require('./config.js');
 const mongoose = require('mongoose');
+const {Card} = require('./models.js');
+const bodyParser = require('body-parser');
 
 const app = express();
 const router = express.Router();
 
 app.use(express.static('public'));
+app.use(bodyParser.json());
 mongoose.Promise = global.Promise;
 
 
@@ -39,11 +42,19 @@ app.post('/cards', (req, res) => {
       answer: req.body.answer,
       reference: req.body.reference})
     .then(
-      card => res.status(201))
+      card => res.status(201).json(card))    
     .catch(err => {
       console.error(err);
       res.status(500).json({message: 'Internal server error'});
     });
+});
+
+app.delete('/cards/:id', (req, res) => {
+  Card
+    .findByIdAndRemove(req.params.id)
+    .exec()
+    .then(card => res.status(204).end())
+    .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
 let server;

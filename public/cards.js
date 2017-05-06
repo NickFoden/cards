@@ -1,6 +1,3 @@
-//const {PORT, DATABASE_URL} = require('./server.js');
-//const {card} = require('./models.js');
-
 var cards_js = [
         {
           "id":"1",
@@ -106,14 +103,18 @@ $(document).on('submit', "#new-card-form", function(e){
     e.preventDefault();
     var newCard ={};
 
-    newCard.id = (cards_js.length + 1)
     newCard.question = $("#question").val();
     newCard.answer = $("#answer").val();
-    newCard.example = $("#example").val();
     newCard.reference = $("#reference").val();
 
     console.log(newCard);
-
+    $.ajax({
+      type: "POST",
+      url: "/cards",
+      data: newCard,
+      success: () => console.log("Post Success"),
+      dataType: "json"
+    });
     cards_js.push(newCard);
 });
 
