@@ -78,6 +78,12 @@ margin-left: 75px;
 	color: #black
 }
 
+#new-card-submit{
+	margin-top: 20px;
+	padding: 5px;
+	margin-left: 50px;
+}
+
 #start-button {
 	background-color: white;
 	border-radius: 4px;
@@ -117,6 +123,11 @@ margin-left: 75px;
 	top: 20px;
 	left: 20px;
 	background-color: #f9b6bc;
+}
+
+.links {
+	margin-left: 50px;
+	padding-top: 50px;
 }
 
 //END
