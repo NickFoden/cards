@@ -11,9 +11,8 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 mongoose.Promise = global.Promise;
 
-<<<<<<< HEAD
 app.listen(process.env.PORT || 8080);
-=======
+
 
 app.get('/cards', (req, res) => {
   Card
