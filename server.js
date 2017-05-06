@@ -11,8 +11,6 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 mongoose.Promise = global.Promise;
 
-app.listen(process.env.PORT || 8080);
-
 
 app.get('/cards', (req, res) => {
   Card
@@ -98,4 +96,3 @@ if (require.main === module) {
   runServer().catch(err => console.error(err));
 };
 module.exports = {app, runServer, stopServer};
-
