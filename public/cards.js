@@ -22,6 +22,7 @@ var cards_js = [
         }
  ];
 
+<<<<<<< HEAD
 let Cards = {};
 
 Cards.create = function(card){
@@ -31,6 +32,11 @@ Cards.create = function(card){
 
 let used = [];
 
+=======
+let used = [];
+
+
+>>>>>>> mvp-client-with-mock-data
 var getCard = () => {
   let notUsed = true;
   while (notUsed && used.length < cards_js.length) {
@@ -40,7 +46,11 @@ var getCard = () => {
       notUsed = false;
     }
   }
+<<<<<<< HEAD
   if (used.length === cards_js.length) {
+=======
+  if ((used.length - 1) === cards_js.length) {
+>>>>>>> mvp-client-with-mock-data
     return false;
   } else {
     return cards_js[index];
@@ -53,8 +63,12 @@ function displayCardQuestion(data){
 	let resultElement = 
     `<div class="display-card-question">
       <h2>${data.question}</h2>
+<<<<<<< HEAD
       <button id="answer-button">Flip It</button>
     </div>`;
+=======
+      </div><button id="answer-button">Flip It</button>`;
+>>>>>>> mvp-client-with-mock-data
 
 	$('#display').html(resultElement);
 };
@@ -62,6 +76,7 @@ function displayCardQuestion(data){
 function displayCardAnswer(data){
     let resultElement = 
       `<div class="display-card-answer">
+<<<<<<< HEAD
         <h2>${data.answer}</h2>
         <button id="next-card">Next</button>
       </div>`;
@@ -71,15 +86,44 @@ function displayCardAnswer(data){
 
 function displayEnd(data){
   let resultElement = `<div class="end-card">You have reached the end</div>`;
+=======
+      <h2><a href="${data.reference}" target="_blank">${data.answer}</a></h2>
+      </div><button id="next-card">Next</button>`;
+    
+    $('#answer-button').hide();
+    $('#display').append(resultElement);
+};
+
+function displayEnd(data){
+  let resultElement = `<div class="end-card">You have reached the end</div>
+                        <button id="start-over" onclick="location.href='start.html'">Start over</button>
+                        <button id="index" onclick="location.href='index.html'">Index</button>`;
+>>>>>>> mvp-client-with-mock-data
 
    $('#display').html(resultElement);  
 };
 
+<<<<<<< HEAD
 $("#start-button").on('click', function(){
+=======
+function displaySummary(data){
+ for (i = 0; i <= data.length; i++){
+  let summary = `<li>${data[i].question}</li>`;
+
+  $('.cards-summary').append(summary);
+ }
+}
+
+$(document).on('click', "#start-button", function(){
+>>>>>>> mvp-client-with-mock-data
     $(".start-text").hide();
     displayCardQuestion(currentCard);
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> mvp-client-with-mock-data
 $(document).on('click', "#answer-button", function(){
     displayCardAnswer(currentCard);
 });
@@ -95,5 +139,34 @@ $(document).on('click', "#next-card", function(){
     
 });
 
+<<<<<<< HEAD
 
 
+=======
+$(document).on('submit', "#new-card-form", function(e){
+    e.preventDefault();
+    var newCard ={};
+
+    newCard.question = $("#question").val();
+    newCard.answer = $("#answer").val();
+    newCard.reference = $("#reference").val();
+
+    console.log(newCard);
+    $.ajax({
+      type: "POST",
+      url: "/cards",
+      data: newCard,
+      success: () => console.log("Post Success"),
+      dataType: "json"
+    });
+    cards_js.push(newCard);
+});
+
+$(document).on('click', "#summary-button", function(){
+  $('#sumary-button').addClass('.hidden');
+  displaySummary(cards_js);
+});
+
+
+//END
+>>>>>>> mvp-client-with-mock-data

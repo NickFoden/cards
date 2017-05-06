@@ -1,6 +1,18 @@
+<<<<<<< HEAD
 * {
 	font-family: "Helvetica", sans-serif;
 	text-decoration: none;
+=======
+html {
+	background: #cdf4cf;
+	font-family: "Helvetica", sans-serif;
+	text-decoration: none;
+}
+
+.h2{
+	color:transparent;
+	text-decoration: none;
+>>>>>>> mvp-client-with-mock-data
 }
 
 
@@ -12,6 +24,14 @@
 	visibility: hidden;
 }
 
+<<<<<<< HEAD
+=======
+.body {
+	margin-left: 200px;
+	margin-top: 100px;
+}
+
+>>>>>>> mvp-client-with-mock-data
 .container {
 	width: 300px;
 	height: 200px;
@@ -20,10 +40,26 @@
 	margin: auto;
 }	
 
+<<<<<<< HEAD
+=======
+.summary-container{
+	margin-left: 200px;
+	margin-top: 100px;
+}
+
+.new-card-container{
+margin-left: 75px;
+}
+.new-card-header{
+	margin-left: 100px;
+}
+
+>>>>>>> mvp-client-with-mock-data
 .p {
 	width: auto;
 	margin: auto;
 }
+<<<<<<< HEAD
 .display-card-question {
 	width: auto;
 	height: 100px;
@@ -52,9 +88,82 @@
 }
 
 #start-button{
+=======
+.a {
+	text-decoration: none;
+}
+.display-card-question {
+	width: 70%;
+	height: 100px;
+	padding:25px;
+	border: 2px solid #3a99a8;
+	background-color: #ebf4ed;
+	color: black;
+}
+
+.display-card-answer {
+	width: 70%;
+	height: 100px;
+	padding:25px;
+	border: 2px solid #3a99a8;
+	background-color: #ebf4ed;
+	color: black;
+	text-decoration: none;
+	margin-top: 15px;
+}
+
+.end-card {
+	width: 50%;
+	height: 100px;
+	padding:25px;
+	border: 2px solid #3a99a8;
+	background-color: #ebf4ed;
+	color: #black
+}
+
+#start-button {
+>>>>>>> mvp-client-with-mock-data
 	background-color: white;
 	border-radius: 4px;
 	padding: 10px;
 	margin: auto;
 }
 
+<<<<<<< HEAD
+=======
+#answer-button {
+	position: relative;
+	top: 20px;
+	left: 20px;
+	height:75px;
+	width: 75px;
+	font-size: 1.5em;
+	background-color: #f9b6bc;
+}
+
+#next-card {
+	position: relative;
+	top: 20px;
+	left: 20px;
+	height: 75px;
+	width: 75px;
+	font-size: 1.5em;
+	background-color: #f9b6bc;
+}
+
+#start-over {
+	position: relative;
+	top: 20px;
+	left: 20px;
+	background-color: #f9b6bc;
+}
+
+#index {
+	position: relative;
+	top: 20px;
+	left: 20px;
+	background-color: #f9b6bc;
+}
+
+//END
+>>>>>>> mvp-client-with-mock-data
