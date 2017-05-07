@@ -9,6 +9,10 @@ body {
 	opacity: 0.8;
 }
 
+* {
+	text-decoration: none;
+}
+
 .h2 {
 	color:transparent;
 	text-decoration: none;
@@ -47,19 +51,15 @@ body {
 	margin-left: 100px;
 }
 
-.a {
-	text-decoration: none;
-}
-
 .nav-bar {
     display: block;
     list-style-type: none;
-    background-color: #eddead;
+    background-color: #f2f5f9;
     padding: 8px;
     text-decoration: none;
     top: 0;
     overflow: hidden;
-    height: 35px;
+    height: 8%;
     position: fixed;
     width: 100%;
 }
@@ -77,7 +77,7 @@ body {
     background-color: #555;
     color: white;
     list-style-type: none;
-    padding: 5px;
+    padding: 2%;
 }
 
 .display-card-question {
@@ -105,6 +105,12 @@ body {
 	margin-top: 10%;
 }
 
+#sign-up-body {
+	margin-left: 20%;
+	margin-top: 10%;
+	font-color: black;
+}
+
 .end-card {
 	width: 50%;
 	height: 100px;
@@ -112,6 +118,9 @@ body {
 	border: 2px solid #3a99a8;
 	background-color: #ebf4ed;
 	color: black;
+}
+.new-card-header {
+	padding-top: 3%;
 }
 
 #new-card-submit {
@@ -159,11 +168,6 @@ body {
 	top: 20px;
 	left: 20px;
 	background-color: #f9b6bc;
-}
-
-.links {
-	margin-left: 50px;
-	padding-top: 50px;
 }
 
 //END
