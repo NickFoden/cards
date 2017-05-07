@@ -59,16 +59,6 @@ describe('Cards Test Index Page', function(){
 			done();
 		});
 	});
-
-	it('end page exists', function(){
-		chai.request(app)
-		.get('/end')
-		.end(function(err, res){
-			res.should.have.status(200);
-			res.should.be.html;
-			done();
-		});
-	});
 });
 
 
