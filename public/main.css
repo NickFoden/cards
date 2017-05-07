@@ -4,7 +4,12 @@ html {
 	text-decoration: none;
 }
 
-.h2{
+body {
+	background: #cdf4cf;
+	opacity: 0.8;
+}
+
+.h2 {
 	color:transparent;
 	text-decoration: none;
 }
@@ -30,15 +35,15 @@ html {
 	margin: auto;
 }	
 
-.summary-container{
+.summary-container {
 	margin-left: 200px;
 	margin-top: 100px;
 }
 
-.new-card-container{
-margin-left: 75px;
+.new-card-container {
+	margin-left: 75px;
 }
-.new-card-header{
+.new-card-header {
 	margin-left: 100px;
 }
 
@@ -49,6 +54,32 @@ margin-left: 75px;
 .a {
 	text-decoration: none;
 }
+
+.index-list ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+}
+
+.index-list a {
+	float: left;
+    display: inline-block;
+    list-style-type: none;
+    width: 200px;
+    color: #000;
+    padding: 8px;
+    text-decoration: none;
+}
+
+/* Change the link color on hover */
+.index-list a:hover {
+    background-color: #555;
+    color: white;
+    list-style-type: none;
+}
+
 .display-card-question {
 	width: 70%;
 	height: 100px;
@@ -60,7 +91,7 @@ margin-left: 75px;
 
 .display-card-answer {
 	width: 70%;
-	height: 100px;
+	min-height: 100px;
 	padding:25px;
 	border: 2px solid #3a99a8;
 	background-color: #ebf4ed;
