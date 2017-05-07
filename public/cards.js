@@ -72,7 +72,6 @@ function displayEnd(data){
 function displaySummary(data){
  for (i = 0; i <= data.length; i++){
   let summary = `<li>${data[i].question}</li>`;
-
   $('.cards-summary').append(summary);
  }
 }
@@ -117,6 +116,6 @@ $(document).on('submit', "#new-card-form", function(e){
 });
 
 $(document).on('click', "#summary-button", function(){
-  $('#sumary-button').addClass('.hidden');
+  $('#summary-button').remove();
   displaySummary(cards_js);
 });
