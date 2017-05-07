@@ -11,8 +11,6 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 mongoose.Promise = global.Promise;
 
-mongoose.connect('DATABASE_URL');
-
 app.get('/cards', (req, res) => {
   Card
     .find()
