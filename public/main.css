@@ -75,10 +75,10 @@ margin-left: 75px;
 	padding:25px;
 	border: 2px solid #3a99a8;
 	background-color: #ebf4ed;
-	color: #black
+	color: black;
 }
 
-#new-card-submit{
+#new-card-submit {
 	margin-top: 20px;
 	padding: 5px;
 	margin-left: 50px;

@@ -11,7 +11,6 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 mongoose.Promise = global.Promise;
 
-
 app.get('/cards', (req, res) => {
   Card
     .find()
