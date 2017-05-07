@@ -24,7 +24,6 @@ var cards_js = [
 
 let used = [];
 
-
 var getCard = () => {
   let notUsed = true;
   while (notUsed && used.length < cards_js.length) {
@@ -96,7 +95,6 @@ $(document).on('click', "#next-card", function(){
     else {
       displayEnd();
     }
-    
 });
 
 $(document).on('submit', "#new-card-form", function(e){
