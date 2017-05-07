@@ -60,7 +60,7 @@ body {
     text-decoration: none;
     top: 0;
     overflow: hidden;
-    height: 8%;
+    height: 30px;
     position: fixed;
     width: 100%;
 }
@@ -73,12 +73,12 @@ body {
     display: inline;
 }
 
-/* Change the link color on hover */
 .nav-bar a:hover {
     background-color: #555;
     color: white;
     list-style-type: none;
-    padding: 2%;
+    padding: 1%;
+    text-decoration: none;
 }
 
 .display-card-question {
