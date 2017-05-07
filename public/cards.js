@@ -52,11 +52,10 @@ function displayCardQuestion(data){
 };
 
 function displayCardAnswer(data){
-    let resultElement = 
-      `<div class="display-card-answer">
-      <h2><a href="${data.reference}" target="_blank">${data.answer}</a></h2>
-      </div><button id="next-card">Next</button>`;
-    
+  let resultElement = 
+    `<div class="display-card-answer">
+    <h2><a href="${data.reference}" target="_blank">${data.answer}</a></h2>
+    </div><button id="next-card">Next</button>`;
     $('#answer-button').hide();
     $('#display').append(resultElement);
 };
@@ -71,16 +70,31 @@ function displayEnd(data){
 
 function displaySummary(data){
  for (i = 0; i <= data.length; i++){
-  let summary = `<li>${data[i].question}</li>`;
+  let summary = `<li>${data[i].question}<button id="${data[i].id}" class="delete">Delete Card</button></li>`;
   $('.cards-summary').append(summary);
+  deleteCard()
  }
 }
+
+function deleteCard(e){
+  e.preventDefault();
+   $.ajax({
+      type: "DELETE",
+      url: "/cards/${e.id}",
+      success: () => console.log("Deleted Successfully"),
+      dataType: "json"
+    });
+
+}
+
+$(document).on('click', "#delete", function(){
+    deleteCard(${e});
+});
 
 $(document).on('click', "#start-button", function(){
     $(".start-text").hide();
     displayCardQuestion(currentCard);
 });
-
 
 $(document).on('click', "#answer-button", function(){
     displayCardAnswer(currentCard);

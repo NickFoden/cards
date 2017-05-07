@@ -73,6 +73,12 @@ body {
     display: inline;
 }
 
+#delete {
+	padding: 3px;
+	margin: 3px;
+	font-size: .75em;
+}
+
 .nav-bar a:hover {
     background-color: #555;
     color: white;
