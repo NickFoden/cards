@@ -27,6 +27,7 @@ app.get('/cards', (req, res) => {
 
 app.post('/cards', (req, res) => {
 	console.log(req);
+	console.log(res);
 	const requiredFields = ['question', 'answer', 'reference'];
 	for (let i=0; i<requiredFields.length; i++) {
 		const field = requiredFields[i];

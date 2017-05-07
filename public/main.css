@@ -22,7 +22,7 @@ body {
 	visibility: hidden;
 }
 
-.body {
+.body-index {
 	margin-left: 200px;
 	margin-top: 100px;
 }
@@ -47,33 +47,37 @@ body {
 	margin-left: 100px;
 }
 
-.p {
-	width: auto;
-	margin: auto;
-}
 .a {
 	text-decoration: none;
 }
 
-.index-list {
-	float: left;
+.nav-bar {
     display: block;
     list-style-type: none;
-    width: 200px;
-    color: #000;
+    background-color: #eddead;
     padding: 8px;
     text-decoration: none;
-    text-align: center;
-    position: fixed;
-    top:0;
+    top: 0;
     overflow: hidden;
+    height: 35px;
+    position: fixed;
+    width: 100%;
+}
+
+.nav-bar li {
+    display: inline;
+    padding: 20px;
+}
+.nav-bar ul {
+    display: inline;
 }
 
 /* Change the link color on hover */
-.index-list a:hover {
+.nav-bar a:hover {
     background-color: #555;
     color: white;
     list-style-type: none;
+    padding: 5px;
 }
 
 .display-card-question {
@@ -94,6 +98,11 @@ body {
 	color: black;
 	text-decoration: none;
 	margin-top: 15px;
+}
+
+.start-body {
+	margin-left: 15%;
+	margin-top: 10%;
 }
 
 .end-card {

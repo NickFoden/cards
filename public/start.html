@@ -5,14 +5,24 @@
 	<link rel="stylesheet" href="main.css">
 	<title>Start Cards</title>
 </head>
-<body class="body">
-	<div class="start-text">
-		<p>Shall we begin?</p>
-		<button id="start-button" type="submit">Ready</button>
+<body>
+	<nav class="nav-bar">
+		<ul class="index-list">
+			<li><a href='start.html'>Get Started</a></li>
+			<li><a href='new-card.html'>Add a New Card</a></li>
+			<li><a href='summary.html'>Summary of Questions</a></li>
+			<li><a style="float:right;" href='sign-up.html'>Sign Up</a></li>
+		</ul>
+	</nav>	
+	<div class="start-body">
+		<div class="start-text">
+			<p>Shall we begin?</p>
+			<button id="start-button" type="submit">Ready</button>
+		</div>	
+		<div id="container">
+			<div id="display"></div>
+		</div>
 	</div>	
-	<div id="container">
-		<div id="display"></div>
-	</div>
 	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>	
 	<script type="text/javascript" src="cards.js"></script>	
 </body>

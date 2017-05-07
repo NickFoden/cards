@@ -112,7 +112,7 @@ $(document).on('submit', "#new-card-form", function(e){
       success: () => console.log("Post Success"),
       dataType: "json"
     });
-    cards_js.push(newCard);
+    //cards_js.push(newCard);
 });
 
 $(document).on('click', "#summary-button", function(){
