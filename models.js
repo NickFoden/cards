@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const {PORT, DATABASE_URL} = require('./config.js');
 
 const cardSchema = mongoose.Schema({
          "question": {type: String, required: true},
@@ -10,5 +11,6 @@ const cardSchema = mongoose.Schema({
 );
 
 const Card = mongoose.model('Card', cardSchema);
+mongoose.connect('DATABASE_URL');
 
 module.exports = {Card};
