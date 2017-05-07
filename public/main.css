@@ -15,7 +15,7 @@ body {
 }
 
 .index-header {
-	margin-left: 100px;
+	margin-left: 70px;
 }
 
 .hidden {
@@ -55,22 +55,18 @@ body {
 	text-decoration: none;
 }
 
-.index-list ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color: #f1f1f1;
-}
-
-.index-list a {
+.index-list {
 	float: left;
-    display: inline-block;
+    display: block;
     list-style-type: none;
     width: 200px;
     color: #000;
     padding: 8px;
     text-decoration: none;
+    text-align: center;
+    position: fixed;
+    top:0;
+    overflow: hidden;
 }
 
 /* Change the link color on hover */
