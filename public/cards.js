@@ -86,7 +86,7 @@ function deleteCard(e){
 }
 
 $(document).on('click', "#delete", function(){
-    deleteCard(this);
+  deleteCard(this);
 });
 
 $(document).on('click', "#start-button", function(){
