@@ -72,7 +72,6 @@ function displaySummary(data){
  for (i = 0; i <= data.length; i++){
   let summary = `<li>${data[i].question}<button id="${data[i].id}" class="delete">Delete Card</button></li>`;
   $('.cards-summary').append(summary);
-  deleteCard()
  }
 }
 
@@ -84,11 +83,10 @@ function deleteCard(e){
       success: () => console.log("Deleted Successfully"),
       dataType: "json"
     });
-
 }
 
 $(document).on('click', "#delete", function(){
-    deleteCard(${e});
+    deleteCard(this);
 });
 
 $(document).on('click', "#start-button", function(){
