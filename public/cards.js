@@ -1,4 +1,4 @@
-var cards_js = [
+/*var cards_js = [
         {
           "id":"1",
           "question":"const",
@@ -20,11 +20,13 @@ var cards_js = [
           "example": "var array = [2, 9, 9] array.indexOf(2) / 0  array.indexOf(7)  / -1",
           "reference":"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Basics"
         }
- ];
+ ];*/
 
 let used = [];
+var cards_js = [];
 
 var getCard = () => {
+  $.ajax(cards_js);
   let notUsed = true;
   while (notUsed && used.length < cards_js.length) {
     var index = Math.floor(Math.random() * cards_js.length);
