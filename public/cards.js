@@ -120,9 +120,10 @@ $(document).on('submit', "#new-card-form", function(e){
     $.ajax({
       type: "POST",
       url: "/cards",
-      data: newCard,
+      data: JSON.stringify(newCard),
       success: () => console.log("Post Success"),
-      dataType: "json"
+      dataType: "json",
+      contentType: "application/json"
     });
     cards_js.push(newCard);
 });
