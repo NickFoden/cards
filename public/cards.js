@@ -82,29 +82,30 @@ function displayEnd(data){
 };
 
 function displaySummary(data){
- for (i = 0; i <= data.length; i++){
-  let summary = `<li>${data[i].question}<button id="${data[i].id}" class="delete">Delete Card</button></li>`;
+ for (i = 0; i < data.length; i++){
+  let summary = `<li>${data[i].question}<button id="${data[i]._id}" class="delete">Delete Card</button></li>`;
   $('.cards-summary').append(summary);
  }
 }
 
-function deleteCard(e){
-  e.preventDefault();
-   $.ajax({
-      type: "DELETE",
-      url: "/cards/${e.id}",
-      success: () => console.log("Deleted Successfully"),
-      dataType: "json"
-    });
+function deleteCard(id){
+  $.ajax({
+    type: "DELETE",
+    url: `/cards/${id}`,
+    dataType: "json",
+    success: () => {
+      console.log("Deleted Successfully")
+    }
+  });
 }
 
-$(document).on('click', "#delete", function(){
-  deleteCard(this);
+$(document).on('click', ".delete", function(){
+  deleteCard($(this).attr("id"));
+  $(this).parent().remove();
 });
 
 $(document).on('click', "#start-button", function(){
     $(".start-text").hide();
-
     displayCardQuestion(currentCard);
 });
 
