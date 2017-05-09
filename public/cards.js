@@ -26,7 +26,7 @@ let used = [];
 var cards_js = [];
 
 var getCard = () => {
-  $.ajax(cards_js);
+  $.ajax(cards) = cards_js;
   let notUsed = true;
   while (notUsed && used.length < cards_js.length) {
     var index = Math.floor(Math.random() * cards_js.length);
