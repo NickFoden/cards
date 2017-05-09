@@ -24,9 +24,22 @@
 
 let used = [];
 var cards_js = [];
+var currentCard;
+
+function loadDb() {
+  $.getJSON(
+    "/cards",
+    function (result){
+      cards_js = result;
+      console.log(cards_js);
+      currentCard = getCard(cards_js);
+    }
+  )
+}  
+
+loadDb();
 
 var getCard = () => {
-  $.ajax(cards) = cards_js;
   let notUsed = true;
   while (notUsed && used.length < cards_js.length) {
     var index = Math.floor(Math.random() * cards_js.length);
@@ -41,8 +54,6 @@ var getCard = () => {
     return cards_js[index];
   }
 };
-
-var currentCard = getCard(cards_js);
  
 function displayCardQuestion(data){
   let resultElement = 
@@ -93,6 +104,7 @@ $(document).on('click', "#delete", function(){
 
 $(document).on('click', "#start-button", function(){
     $(".start-text").hide();
+
     displayCardQuestion(currentCard);
 });
 
