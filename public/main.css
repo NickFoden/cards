@@ -73,6 +73,11 @@ body {
     display: inline;
 }
 
+#sign-up {
+	float:right; 
+	padding-right: 5px;"
+}
+
 .delete {
 	padding: 3px;
 	margin: 3px;
