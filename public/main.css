@@ -9,9 +9,10 @@ body {
 	opacity: 0.8;
 }
 
-* {
+a, a:hover {
 	text-decoration: none;
 }
+
 
 .h2 {
 	color:transparent;
@@ -69,13 +70,18 @@ body {
     display: inline;
     padding: 20px;
 }
+
 .nav-bar ul {
     display: inline;
 }
 
+.nav-bar a {
+    padding: 5px;
+}
+
 #sign-up {
-	float:right; 
-	padding-right: 5px;"
+	float: right; 
+	margin-right: 5px;
 }
 
 .delete {
@@ -88,7 +94,6 @@ body {
     background-color: #555;
     color: white;
     list-style-type: none;
-    padding: 1%;
     text-decoration: none;
 }
 
