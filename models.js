@@ -4,7 +4,8 @@ const {PORT, DATABASE_URL} = require('./config.js');
 const cardSchema = mongoose.Schema({
          "question": {type: String, required: true},
          "answer": {type: String, required: true},
-         "reference": {type: String, required: true}
+         "reference": {type: String, required: true},
+         "difficulty": {}
      }, {
           "versionKey": false 
      }

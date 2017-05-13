@@ -3,6 +3,8 @@ const {PORT, DATABASE_URL} = require('./config.js');
 const mongoose = require('mongoose');
 const {Card} = require('./models.js');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
 
 const app = express();
 const router = express.Router();
