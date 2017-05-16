@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 const {PORT, DATABASE_URL} = require('./config.js');
 
 const cardSchema = mongoose.Schema({
@@ -11,6 +12,15 @@ const cardSchema = mongoose.Schema({
      }
 );
 
-const Card = mongoose.model('Card', cardSchema);
+const userSchema = mongoose.Schema({
+         "username": {type: String, required: true},
+         "password": {type: String, required: true},
+         "email": {type: String, required: true},
+         "name": {type: String}
+     }, 
+);
 
-module.exports = {Card};
+const Card = mongoose.model('Card', cardSchema);
+const User = mongoose.model('User', userSchema);
+
+module.exports = {Card, User};
