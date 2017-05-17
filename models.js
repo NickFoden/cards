@@ -17,7 +17,7 @@ const userSchema = mongoose.Schema({
          "password": {type: String, required: true},
          "email": {type: String, required: true},
          "name": {type: String}
-     }, 
+     } 
 );
 
 const Card = mongoose.model('Card', cardSchema);
