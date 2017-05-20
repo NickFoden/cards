@@ -1,1 +1,1 @@
-readme.md
+#CARDS [![Build Status](https://travis-ci.org/NickFoden/cards)](https://travis-ci.org/NickFoden/cards)
