@@ -4,6 +4,10 @@ html {
 	text-decoration: none;
 }
 
+* {
+	box-sizing: border-box;
+}
+
 body {
 	background: #cdf4cf;
 	opacity: 0.8;
@@ -81,8 +85,7 @@ a, a:hover {
 
 #sign-up {
 	float: right; 
-	margin-right: 5px;
-	padding-right: 5px;
+	margin-left: 5px;
 }
 
 .delete {
