@@ -1,1 +1,1 @@
-#CARDS [![Build Status](https://travis-ci.org/NickFoden/cards)](https://travis-ci.org/NickFoden/cards)
+#CARDS [![Build Status](https://api.travis-ci.org/NickFoden/cards.svg?branch=master)](https://travis-ci.org/NickFoden/cards)
