@@ -160,7 +160,7 @@ a, a:hover {
 	height:75px;
 	width: 75px;
 	font-size: 1.5em;
-	background-color: #f9b6bc;
+	background-color: #3399ff;
 }
 
 #next-card {
@@ -170,21 +170,21 @@ a, a:hover {
 	height: 75px;
 	width: 75px;
 	font-size: 1.5em;
-	background-color: #f9b6bc;
+	background-color: #3399ff;
 }
 
 #start-over {
 	position: relative;
 	top: 20px;
 	left: 20px;
-	background-color: #f9b6bc;
+	background-color: #3399ff;
 }
 
 #index {
 	position: relative;
 	top: 20px;
 	left: 20px;
-	background-color: #f9b6bc;
+	background-color: #3399ff;
 }
 
 //END
