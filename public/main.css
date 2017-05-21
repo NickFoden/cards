@@ -1,16 +1,18 @@
+
+* {
+	box-sizing: border-box;
+}
+
 html {
 	background: #cdf4cf;
 	font-family: "Helvetica", sans-serif;
 	text-decoration: none;
 }
 
-* {
-	box-sizing: border-box;
-}
-
 body {
 	background: #cdf4cf;
 	opacity: 0.8;
+	margin: 0;
 }
 
 a, a:hover {
@@ -64,9 +66,10 @@ a, a:hover {
     padding: 8px;
     text-decoration: none;
     top: 0;
+    left: 0;
+    right: 0;
     overflow: hidden;
     height: 30px;
-    position: fixed;
     width: 100%;
 }
 
