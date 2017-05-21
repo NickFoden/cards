@@ -76,7 +76,7 @@ function displayCardAnswer(data){
 function displayEnd(data){
   let resultElement = `<div class="end-card">You have reached the end</div>
                         <button id="start-over" onclick="location.href='start.html'">Start over</button>
-                        <button id="index" onclick="location.href='index.html'">Index</button>`;
+                        <button id="index" onclick="location.href='summary.html'">Index of Cards</button>`;
 
    $('#display').html(resultElement);  
 };
