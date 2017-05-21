@@ -83,7 +83,7 @@ function displayEnd(data){
 
 function displaySummary(data){
  for (i = 0; i < data.length; i++){
-  let summary = `<li>${data[i].question}<button id="${data[i]._id}" class="delete">Delete Card</button></li>`;
+  let summary = `<li>${data[i].question}<button id="${data[i]._id}" class="delete">Delete</button></li>`;
   $('.cards-summary').append(summary);
  }
 }
@@ -145,5 +145,6 @@ $(document).on('submit', "#new-card-form", function(e){
 
 $(document).on('click', "#summary-button", function(){
   $('#summary-button').remove();
+  $('.cards-summary').removeClass('hidden');
   displaySummary(cards_js);
 });
