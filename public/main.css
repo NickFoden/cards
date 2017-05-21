@@ -4,13 +4,13 @@
 }
 
 html {
-	background: #cdf4cf;
+	background: #24D69E;
 	font-family: "Helvetica", sans-serif;
 	text-decoration: none;
 }
 
 body {
-	background: #cdf4cf;
+	background: #24D69E;
 	opacity: 0.8;
 	margin: 0;
 }
@@ -62,7 +62,7 @@ a, a:hover {
 .nav-bar {
     display: block;
     list-style-type: none;
-    background-color: #f2f5f9;
+    background-color: #EDF1F2;
     padding: 8px;
     text-decoration: none;
     top: 0;
