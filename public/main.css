@@ -214,7 +214,7 @@ a, a:hover {
 
 .cards-summary {
 	height: auto;
-	width: 300px;
+	min-width: 400px;
 	padding: 5px;
 	background-color: #EDF1F2;
 	font-size: 1em;
