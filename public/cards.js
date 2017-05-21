@@ -145,6 +145,8 @@ $(document).on('submit', "#new-card-form", function(e){
 
 $(document).on('click', "#summary-button", function(){
   $('#summary-button').remove();
+  $('.summary-title').addClass('hidden');
+  $('.summary-list').removeClass('hidden');
   $('.cards-summary').removeClass('hidden');
   displaySummary(cards_js);
 });
