@@ -141,6 +141,7 @@ $(document).on('submit', "#new-card-form", function(e){
       contentType: "application/json"
     });
     cards_js.push(newCard);
+    document.getElementById("new-card-form").reset();
 });
 
 $(document).on('click', "#summary-button", function(){
