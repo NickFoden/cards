@@ -215,11 +215,13 @@ a, a:hover {
 .cards-summary {
 	height: auto;
 	min-width: 300px;
+	width: 60%; 
 	margin-right: 35%;
 	padding: 5px;
 	background-color: #EDF1F2;
 	font-size: 1em;
 	border: 1px solid #4B5C66;
+	list-style-type: none;
 }
 
 .delete {
