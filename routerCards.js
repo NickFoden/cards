@@ -1,4 +1,17 @@
+const express = require('express');
+const app = express();
+const router = express.Router();
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
+mongoose.Promise = global.Promise;
+const {Card, User} = require('./models.js');
 
+const {Card} = require('./models.js');
+
+app.use('/cards/', routerCards);
+app.use('/users/', routerUsers);
 
 app.get('/', (req, res) => {
   Card
@@ -47,4 +60,5 @@ app.delete('/:id', (req, res) => {
     .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
+module.exports = {Card};
 //End

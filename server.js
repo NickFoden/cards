@@ -8,8 +8,8 @@ const passport = require('passport');
 
 const app = express();
 const router = express.Router();
-const routerUsers = require('/routerUsers');
-const routerCards = require('/routerCards');
+const routerUsers = require('./routerUsers');
+const routerCards = require('./routerCards');
 
 
 app.use(express.static('public'));
