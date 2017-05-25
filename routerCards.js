@@ -1,17 +1,13 @@
 const express = require('express');
 const app = express();
-const router = express.Router();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const jsonParser = require('body-parser').json();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 mongoose.Promise = global.Promise;
-const {Card, User} = require('./models.js');
-
 const {Card} = require('./models.js');
-
-app.use('/cards/', routerCards);
-app.use('/users/', routerUsers);
+const routerCards = express.Router();
 
 app.get('/', (req, res) => {
   Card
@@ -61,4 +57,5 @@ app.delete('/:id', (req, res) => {
 });
 
 module.exports = {Card};
+module.exports = {routerCards};
 //End
