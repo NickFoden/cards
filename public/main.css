@@ -261,10 +261,9 @@ a, a:hover {
 	    left: 0;
 	    right: 0;
 	    overflow: hidden;
-	    height: 300px;
+	    height: 100%;
 	    width: 25px;
 	    writing-mode: vertical-rl;
-	    text-orientation: sideways-left;
 	}
 	
 	.nav-bar li {
@@ -274,6 +273,20 @@ a, a:hover {
 
 	.nav-bar ul {
 	    display: inline;
+	}
+	.body-index {
+		position: fixed;
+		top: 0;
+	}
+	#sign-up {
+		float: none; 
+		margin-left: 0px;
+		margin-top: 0px;
+	}
+	#sign-up-body {
+		margin-left: 0;
+		margin-top: 0;
+		font-color: black;
 	}
 }
 
