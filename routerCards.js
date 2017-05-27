@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const routerCards = express.Router();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const jsonParser = require('body-parser').json();
@@ -7,7 +8,7 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 mongoose.Promise = global.Promise;
 const {Card} = require('./models.js');
-const routerCards = express.Router();
+
 
 app.get('/', (req, res) => {
   Card
@@ -58,4 +59,5 @@ app.delete('/:id', (req, res) => {
 
 module.exports = {Card};
 module.exports = {routerCards};
+module.exports = {router};
 //End
