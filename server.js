@@ -1,21 +1,18 @@
+const bodyParser = require('body-parser');
 const express = require('express');
 const {PORT, DATABASE_URL} = require('./config.js');
 const mongoose = require('mongoose');
 const {Card, Users} = require('./models.js');
-const bodyParser = require('body-parser');
-const bcrypt = require('bcryptjs');
-const passport = require('passport');
 
-const app = express();
-//const router = express.Router();
-//const routerUsers = require('./routerUsers');
-//const routerCards = require('./routerCards');
 const {router: routerCards} = require('./routerCards');
 const {router: routerUsers} = require('./routerUsers');
 
+mongoose.Promise = global.Promise;
+const app = express();
+
 app.use(express.static('public'));
 app.use(bodyParser.json());
-mongoose.Promise = global.Promise;
+
 
 app.use('/cards/', routerCards);
 app.use('/users/', routerUsers);

@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
 const {PORT, DATABASE_URL} = require('./config.js');
+mongoose.Promise = global.Promise;
 
 const cardSchema = mongoose.Schema({
          "question": {type: String, required: true},
@@ -13,7 +15,7 @@ const cardSchema = mongoose.Schema({
 );
 
 const userSchema = mongoose.Schema({
-         "username": {type: String, required: true},
+         "username": {type: String, required: true, unique: true},
          "password": {type: String, required: true},
          "email": {type: String, required: true},
          "name": {type: String}

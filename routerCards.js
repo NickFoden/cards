@@ -8,8 +8,11 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 mongoose.Promise = global.Promise;
 const {Card} = require('./models.js');
+const {PORT, DATABASE_URL} = require('./config.js');
 
 const routerCards = router;
+
+router.use(jsonParser);
 
 app.get('/', (req, res) => {
   Card
