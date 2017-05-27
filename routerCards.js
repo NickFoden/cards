@@ -14,7 +14,7 @@ const routerCards = router;
 
 router.use(jsonParser);
 
-app.get('/', (req, res) => {
+router.get('/', (req, res) => {
   Card
     .find()
     .exec()
@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
     });
 });
 
-app.post('/', (req, res) => {
+router.post('/', (req, res) => {
 	console.log(req);
 	console.log(res);
 	const requiredFields = ['question', 'answer', 'reference'];
@@ -53,7 +53,7 @@ app.post('/', (req, res) => {
     });
 });
 
-app.delete('/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   Card
     .findByIdAndRemove(req.params.id)
     .exec()
@@ -62,5 +62,5 @@ app.delete('/:id', (req, res) => {
 });
 
 module.exports = {Card};
-module.exports = {router: routerCards};
+module.exports = {router};
 //End

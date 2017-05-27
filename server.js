@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
-const {Card, Users} = require('./models.js');
+const {Card, User} = require('./models.js');
 const {router: routerCards} = require('./routerCards');
 const {router: routerUsers} = require('./routerUsers');
 mongoose.Promise = global.Promise;
