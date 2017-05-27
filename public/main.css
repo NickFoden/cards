@@ -48,7 +48,18 @@ a, a:hover {
 
 .new-card-container {
 	margin-left: 75px;
+	width: 20%;
 }
+
+.form-input {
+	float: right;
+}
+
+.row {
+	display: block;
+	overflow: hidden;
+}
+
 .new-card-header {
 	margin-top: 5%;
 	margin-left: 100px;

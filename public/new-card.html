@@ -20,12 +20,18 @@
 	</div>
 	<div class="new-card-container">
 		<form id="new-card-form">	
-			<label for="question">Question</label>
-			<input type="text" placeholder="js method" id="question" required/><br>
-			<label for="answer">Answer</label>
-			<input type="text" placeholder="short answer" id="answer" required/><br>
-			<label for="answer">Reference</label>
-			<input type="text" placeholder="link to reference" id="reference" required/><br>
+			<div class="row">
+				<label class ="form-label" for="question">Question</label>
+				<input class ="form-input" type="text" placeholder="js method" id="question" required/><br>
+			</div>	
+			<div class="row">
+				<label class ="form-label" for="answer">Answer</label>
+				<input class ="form-input" type="text" placeholder="short answer" id="answer" required/><br>
+			</div>	
+			<div class="row">
+				<label class ="form-label" for="answer">Reference</label>
+				<input class ="form-input" type="text" placeholder="link to reference" id="reference" required/><br>
+			</div>	
 			<button type="submit" value="Submit" id="new-card-submit">Submit</button>
 		</form>
 	</div>
