@@ -7,3 +7,7 @@ const {User} = require('./models');
 
 const router = express.Router();
 
+const routerUsers = router;
+
+module.exports = {router: routerUsers};
+

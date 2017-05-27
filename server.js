@@ -7,10 +7,11 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
 const app = express();
-const router = express.Router();
-const routerUsers = require('./routerUsers');
-const routerCards = require('./routerCards');
-
+//const router = express.Router();
+//const routerUsers = require('./routerUsers');
+//const routerCards = require('./routerCards');
+const {router: routerCards} = require('./routerCards');
+const {router: routerUsers} = require('./routerUsers');
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
