@@ -51,6 +51,11 @@ a, a:hover {
 	width: 250px;
 }
 
+.login-container {
+	margin-left: 75px;
+	width: 250px;
+}
+
 .form-input {
 	float: right;
 }
