@@ -1,16 +1,6 @@
 let users = [];
 var currentUser;
 
-function loadDb() {
-  $.getJSON(
-    "/users",
-    function (result){
-      Users = result;
-      console.log(Users);
-    }
-  )
-}  
-
 var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
 
