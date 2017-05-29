@@ -11,5 +11,25 @@ const router = express.Router();
 
 const routerUsers = router;
 
+router.get('/users', (req, res) => {
+  User
+    .find()
+    .exec()
+    .then(cards => {
+      res.status(200).json(routerUsers);
+    })
+    .catch(
+      err => {
+        console.error(err);
+        res.status(500).json({message: 'Internal server error'});
+    });
+});
+
+
+router.post('/users',
+  passport.authenticate('local', { successRedirect: '/',
+                                   failureRedirect: '/login'})
+);
+
 module.exports = {router: routerUsers};
 

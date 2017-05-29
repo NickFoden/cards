@@ -3,7 +3,7 @@
 <head>
 	<link rel="stylesheet" href="main.css">
 	<link rel="shortcut icon" href="favicon.ico">
-	<title>Start Cards</title>
+	<title></title>
 </head>
 <body>
 	<nav class="nav-bar">
@@ -16,13 +16,20 @@
 			<li><a id='sign-up' href='sign-up.html'>Sign Up</a></li>
 		</ul>
 	</nav>
-	<div class="start-body">
-		<div class="start-text">
-			<p>Shall we begin?</p>
-			<button id="start-button" type="submit">Ready</button>
-		</div>	
-		<div id="container">
-			<div id="display"></div>
+	<div id="login-body">	
+		<h2>Log In</h2>
+		<div class="login-container">
+			<form id="login-form">	
+				<div class="row">
+					<label class ="form-label" for="user">Email</label>
+					<input class ="form-input" type="email" placeholder="user email" id="question" required/><br>
+				</div>	
+				<div class="row">
+					<label class ="form-label" for="password">Password</label>
+					<input class ="form-input" type="text" placeholder="password" id="password" required/><br>
+				</div>	
+				<button type="submit" value="Submit" id="new-card-submit">Sign Up</button>
+			</form>
 		</div>
 	</div>	
 	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>	
