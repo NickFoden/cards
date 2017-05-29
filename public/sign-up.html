@@ -16,7 +16,20 @@
 		</ul>
 	</nav>
 	<div id="sign-up-body">	
-		<h2>Sign up so you can create your own cards</h2>
+		<h2>Sign up and create your own cards</h2>
+		<div class="new-card-container">
+			<form id="new-user-form">	
+				<div class="row">
+					<label class ="form-label" for="user">Email</label>
+					<input class ="form-input" type="email" placeholder="user email" id="question" required/><br>
+				</div>	
+				<div class="row">
+					<label class ="form-label" for="password">Password</label>
+					<input class ="form-input" type="text" placeholder="password" id="password" required/><br>
+				</div>	
+				<button type="submit" value="Submit" id="new-card-submit">Sign Up</button>
+			</form>
+		</div>
 	</div>	
 	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>	
 	<script type="text/javascript" src="cards.js"></script>	
