@@ -1,40 +1,19 @@
-const {BasicStrategy} = require('passport-http');
 const express = require('express');
+const app = express();
 const router = express.Router();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const jsonParser = require('body-parser').json();
-const passport = require('passport');
 const bcrypt = require('bcryptjs');
-const {PORT, DATABASE_URL} = require('./config.js');
+const passport = require('passport');
 mongoose.Promise = global.Promise;
-const {User} = require('./models');
-
-const router = express.Router();
+const {User} = require('./models.js');
+const {PORT, DATABASE_URL} = require('./config.js');
 
 const routerUsers = router;
 
-const {PORT, DATABASE_URL} = require('./config.js');
+router.use(jsonParser);
 
-router.get('/users', (req, res) => {
-  User
-    .find()
-    .exec()
-    .then(cards => {
-      res.status(200).json(routerUsers);
-    })
-    .catch(
-      err => {
-        console.error(err);
-        res.status(500).json({message: 'Internal server error'});
-    });
-});
-
-
-router.post('/users',
-  passport.authenticate('local', { successRedirect: '/',
-                                   failureRedirect: '/login'})
-);
-
-module.exports = {router: routerUsers};
-
+module.exports = {User};
+module.exports = {router};
+//End
