@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const passport = require('passport');
-const {PORT, DATABASE_URL} = require('./config.js');
 mongoose.Promise = global.Promise;
 
 const cardSchema = mongoose.Schema({
@@ -19,6 +17,18 @@ const userSchema = mongoose.Schema({
          "password": {type: String, required: true}
      } 
 );
+
+userSchema.methods.validatePassword = function(password) {
+  return bcrypt
+    .compare(password, this.password)
+    .then(isValid => isValid);
+}
+
+userSchema.statics.hashPassword = function(password) {
+  return bcrypt
+    .hash(password, 10)
+    .then(hash => hash);
+}
 
 const Card = mongoose.model('Card', cardSchema);
 const User = mongoose.model('User', userSchema);
