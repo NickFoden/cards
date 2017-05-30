@@ -49,6 +49,17 @@ describe('Cards Test Index Page', function(){
 			done();
 		});
 	});
+	
+	it('login exists', function(){
+		chai.request(app)
+		.get('/login')
+		.end(function(err, res){
+			res.should.have.status(200);
+			res.should.be.html;
+			done();
+		});
+	});
+
 
 	it('summary page exists', function(){
 		chai.request(app)
