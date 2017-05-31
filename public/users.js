@@ -1,17 +1,3 @@
-let registeredUsers = [];
-
-function loadDb() {
-  $.getJSON(
-    "/users",
-    function (result){
-      existingUsers = result;
-      console.log(existingUsers);
-    }
-  )
-} 
-
-loadDb();
-
 $(document).on('submit', "#new-user-form", function(e){
     e.preventDefault();
     var newUser ={};
@@ -28,6 +14,5 @@ $(document).on('submit', "#new-user-form", function(e){
       dataType: "json",
       contentType: "application/json"
     });
-    registeredUsers.push(newUser);
     document.getElementById("new-user-form").reset();
 });

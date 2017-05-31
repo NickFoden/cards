@@ -37,6 +37,7 @@ const strategy = new BasicStrategy(
 passport.use(strategy);
 
 router.post('/', (req, res) => {
+  console.log(req.body);
   if (!req.body) {
     return res.status(400).json({message: 'No request body'});
   }
@@ -47,7 +48,7 @@ router.post('/', (req, res) => {
 
   let {email, password} = req.body;
 
-  if (typeof email !== 'email') {
+  if (typeof email !== 'string') {
     return res.status(422).json({message: 'Incorrect field type: email'});
   }
 
@@ -79,7 +80,7 @@ router.post('/', (req, res) => {
       if (count > 0) {
         return Promise.reject({
           name: 'AuthenticationError',
-          message: 'username already taken'
+          message: 'Email already taken'
         });
       }
       // if no existing user, hash password
@@ -93,13 +94,15 @@ router.post('/', (req, res) => {
         })
     })
     .then(user => {
+      console.log(user);
       return res.status(201).json(user.apiRepr());
     })
     .catch(err => {
+      console.log(err);
       if (err.name === 'AuthenticationError') {
         return res.status(422).json({message: err.message});
       }
-      res.status(500).json({message: 'Internal server error'})
+      res.status(500).json({message: 'Internal server BIG error'})
     });
 });
 
@@ -136,10 +139,10 @@ const basicStrategy = new BasicStrategy(function(username, password, callback) {
 passport.use(basicStrategy);
 router.use(passport.initialize());
 
-router.get('/users',
+/*router.get('/users',
   passport.authenticate('basic', {session: false}),
   (req, res) => res.json({user: req.user.apiRepr()})
-);
+);*/
 
 /*router.post('/', (req, res) => {
   console.log(req);
