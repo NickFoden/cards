@@ -15,47 +15,6 @@ const routerUsers = router;
 
 router.use(jsonParser);
 
-
-router.get('/', (req, res) => {
-  User
-    .find()
-    .exec()
-    .then(users => {
-      res.status(200).json(users);
-    })
-    .catch(
-      err => {
-        console.error(err);
-        res.status(500).json({message: 'Internal server error'});
-    });
-});
-
-router.post('/', (req, res) => {
-  console.log(req);
-  console.log(res);
-  const requiredFields = ['email', 'password' ];
-  for (let i=0; i<requiredFields.length; i++) {
-    const field = requiredFields[i];
-    if (!(field in req.body)) {
-      const message = `Missing \`${field}\` in request body`;
-      console.error(message);
-      return res.status(400).send(message);
-    }
-  }
-  User
-    .create({
-      email: req.body.email,
-      password: req.body.password})
-    .then(
-      User => res.status(201).json(User))    
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({message: 'Internal server error'});
-    });
-    console.log(User);
-});
-
-/*
 const strategy = new BasicStrategy(
   (email, password, cb) => {
     User
@@ -76,7 +35,6 @@ const strategy = new BasicStrategy(
 });
 
 passport.use(strategy);
-
 
 router.post('/', (req, res) => {
   if (!req.body) {
@@ -131,10 +89,8 @@ router.post('/', (req, res) => {
     .then(hash => {
       return User
         .create({
-          username: username,
-          password: hash,
-          firstName: firstName,
-          lastName: lastName
+          email: email,
+          password: hash
         })
     })
     .then(user => {
@@ -148,10 +104,6 @@ router.post('/', (req, res) => {
     });
 });
 
-// never expose all your users like below in a prod application
-// we're just doing this so we have a quick way to see
-// if we're creating users. keep in mind, you can also
-// verify this in the Mongo shell.
 router.get('/', (req, res) => {
   return User
     .find()
@@ -160,8 +112,6 @@ router.get('/', (req, res) => {
     .catch(err => console.log(err) && res.status(500).json({message: 'Internal server error'}));
 });
 
-
-// NB: at time of writing, passport uses callbacks, not promises
 const basicStrategy = new BasicStrategy(function(username, password, callback) {
   let user;
   User
@@ -184,15 +134,53 @@ const basicStrategy = new BasicStrategy(function(username, password, callback) {
     });
 });
 
-
 passport.use(basicStrategy);
 router.use(passport.initialize());
 
-router.get('/me',
+router.get('/users',
   passport.authenticate('basic', {session: false}),
   (req, res) => res.json({user: req.user.apiRepr()})
 );
-*/
+
+/*router.post('/', (req, res) => {
+  console.log(req);
+  console.log(res);
+  const requiredFields = ['email', 'password' ];
+  for (let i=0; i<requiredFields.length; i++) {
+    const field = requiredFields[i];
+    if (!(field in req.body)) {
+      const message = `Missing \`${field}\` in request body`;
+      console.error(message);
+      return res.status(400).send(message);
+    }
+  }
+  User
+    .create({
+      email: req.body.email,
+      password: req.body.password})
+    .then(
+      User => res.status(201).json(User))    
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({message: 'Internal server error'});
+    });
+    console.log(User);
+});
+
+router.get('/', (req, res) => {
+  User
+    .find()
+    .exec()
+    .then(users => {
+      res.status(200).json(users);
+    })
+    .catch(
+      err => {
+        console.error(err);
+        res.status(500).json({message: 'Internal server error'});
+    });
+});*/
 
 module.exports = {router};
+
 //End

@@ -1,6 +1,5 @@
 let registeredUsers = [];
 
-
 function loadDb() {
   $.getJSON(
     "/users",
