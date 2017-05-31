@@ -31,7 +31,6 @@ function loadDb() {
     "/cards",
     function (result){
       cards_js = result;
-      console.log(cards_js);
       currentCard = getCard(cards_js);
     }
   )
