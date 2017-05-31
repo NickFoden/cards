@@ -41,20 +41,20 @@ router.post('/', (req, res) => {
     return res.status(400).json({message: 'No request body'});
   }
 
-  if (!('username' in req.body)) {
-    return res.status(422).json({message: 'Missing field: username'});
+  if (!('email' in req.body)) {
+    return res.status(422).json({message: 'Missing field: email'});
   }
 
-  let {username, password, firstName, lastName} = req.body;
+  let {email, password} = req.body;
 
-  if (typeof username !== 'string') {
-    return res.status(422).json({message: 'Incorrect field type: username'});
+  if (typeof email !== 'email') {
+    return res.status(422).json({message: 'Incorrect field type: email'});
   }
 
-  username = username.trim();
+  email = email.trim();
 
-  if (username === '') {
-    return res.status(422).json({message: 'Incorrect field length: username'});
+  if (email=== '') {
+    return res.status(422).json({message: 'Incorrect field length: email'});
   }
 
   if (!(password)) {
