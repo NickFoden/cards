@@ -71,7 +71,6 @@ router.post('/', (req, res) => {
     return res.status(422).json({message: 'Incorrect field length: password'});
   }
 
-  // check for existing user
   return User
     .find({email})
     .count()
