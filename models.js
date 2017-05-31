@@ -18,6 +18,12 @@ const userSchema = mongoose.Schema({
      } 
 );
 
+userSchema.methods.apiRepr = function() {
+  return {
+    email: this.email || ''
+  };
+}
+
 userSchema.methods.validatePassword = function(password) {
   return bcrypt
     .compare(password, this.password)
@@ -28,12 +34,6 @@ userSchema.statics.hashPassword = function(password) {
   return bcrypt
     .hash(password, 10)
     .then(hash => hash);
-}
-
-userSchema.methods.apiRepr = function() {
-  return {
-    email: this.email || ''
-  };
 }
 
 const Card = mongoose.model('Card', cardSchema);
