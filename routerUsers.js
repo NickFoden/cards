@@ -7,19 +7,16 @@ const bodyParser = require('body-parser');
 const jsonParser = require('body-parser').json();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
-const expressSession = require('express-session');
 mongoose.Promise = global.Promise;
 const {User} = require('./models.js');
 const {PORT, DATABASE_URL} = require('./config.js');
+const LocalStrategy = require('passport-local').Strategy;
 
 const routerUsers = router;
 
 router.use(jsonParser);
-router.use(expressSession({secret: 'mySecretKey'}));
-router.use(passport.initialize());
-router.use(passport.session());
 
-const strategy = new BasicStrategy(
+const strategy = new BasicStrategy (
   (email, password, cb) => {
     User
       .findOne({email})
@@ -110,38 +107,11 @@ router.post('/', (req, res) => {
     });
 });
 
-router.get('/', (req, res) => {
-  return User
-    .find()
-    .exec()
-    .then(users => res.json(users.map(user => user.apiRepr())))
-    .catch(err => console.log(err) && res.status(500).json({message: 'Internal server error'}));
-});
-
-const basicStrategy = new BasicStrategy(function(email, password, callback) {
-  let user;
-  User
-    .findOne({email: email})
-    .exec()
-    .then(_user => {
-      user = _user;
-      if (!user) {
-        return callback(null, false, {message: 'Incorrect email'});
-      }
-      return user.validatePassword(password);
-    })
-    .then(isValid => {
-      if (!isValid) {
-        return callback(null, false, {message: 'Incorrect password'});
-      }
-      else {
-        return callback(null, user)
-      }
-    });
-});
-
-passport.use(basicStrategy);
-router.use(passport.initialize());
+router.post('users/login',
+  passport.authenticate('local', {successRedirect: '/', failureRediect: 'login.html'}),
+  function(req, res) {
+    res.redirect('/');
+  });
 
 module.exports = {router};
 

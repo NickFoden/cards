@@ -5,10 +5,9 @@ $(document).on('submit', "#login-form", function(e){
     existingUser.email = $("#email").val();
     existingUser.password = $("#password").val();
 
-    console.log(existingUser);
     $.ajax({
-      type: "GET",
-      url: "/users",
+      type: "POST",
+      url: "users/login",
       data: JSON.stringify(existingUser),
       success: () => console.log("Get Success"),
       dataType: "json",
