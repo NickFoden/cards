@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const jsonParser = require('body-parser').json();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const expressSession = require('express-session');
 mongoose.Promise = global.Promise;
 const {User} = require('./models.js');
 const {PORT, DATABASE_URL} = require('./config.js');
@@ -14,6 +15,9 @@ const {PORT, DATABASE_URL} = require('./config.js');
 const routerUsers = router;
 
 router.use(jsonParser);
+router.use(expressSession({secret: 'mySecretKey'}));
+router.use(passport.initialize());
+router.use(passport.session());
 
 const strategy = new BasicStrategy(
   (email, password, cb) => {
@@ -138,50 +142,6 @@ const basicStrategy = new BasicStrategy(function(username, password, callback) {
 
 passport.use(basicStrategy);
 router.use(passport.initialize());
-
-/*router.get('/users',
-  passport.authenticate('basic', {session: false}),
-  (req, res) => res.json({user: req.user.apiRepr()})
-);*/
-
-/*router.post('/', (req, res) => {
-  console.log(req);
-  console.log(res);
-  const requiredFields = ['email', 'password' ];
-  for (let i=0; i<requiredFields.length; i++) {
-    const field = requiredFields[i];
-    if (!(field in req.body)) {
-      const message = `Missing \`${field}\` in request body`;
-      console.error(message);
-      return res.status(400).send(message);
-    }
-  }
-  User
-    .create({
-      email: req.body.email,
-      password: req.body.password})
-    .then(
-      User => res.status(201).json(User))    
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({message: 'Internal server error'});
-    });
-    console.log(User);
-});
-
-router.get('/', (req, res) => {
-  User
-    .find()
-    .exec()
-    .then(users => {
-      res.status(200).json(users);
-    })
-    .catch(
-      err => {
-        console.error(err);
-        res.status(500).json({message: 'Internal server error'});
-    });
-});*/
 
 module.exports = {router};
 
