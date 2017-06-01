@@ -1,4 +1,3 @@
-const {BasicStrategy} = require('passport-http');
 const express = require('express');
 const app = express();
 const router = express.Router();
@@ -10,32 +9,11 @@ const passport = require('passport');
 mongoose.Promise = global.Promise;
 const {User} = require('./models.js');
 const {PORT, DATABASE_URL} = require('./config.js');
-const LocalStrategy = require('passport-local').Strategy;
+const Strategy = require('passport-local').Strategy;
 
 const routerUsers = router;
 
 router.use(jsonParser);
-
-const strategy = new BasicStrategy (
-  (email, password, cb) => {
-    User
-      .findOne({email})
-      .exec()
-      .then(user => {
-        if (!user) {
-          return cb(null, false, {
-            message: 'Incorrect username'
-          });
-        }
-        if (user.password !== password) {
-          return cb(null, false, 'Incorrect password');
-        }
-        return cb(null, user);
-      })
-      .catch(err => cb(err))
-});
-
-passport.use(strategy);
 
 router.post('/', (req, res) => {
   console.log(req.body);
@@ -107,10 +85,41 @@ router.post('/', (req, res) => {
     });
 });
 
-router.post('users/login',
-  passport.authenticate('local', {successRedirect: '/', failureRediect: 'login.html'}),
+
+passport.use(new Strategy(
+  function(email, password, cb) {
+    Users.findByEmail(email, function(err, user) {
+      if (err) { return cb(err); }
+      if (!user) { return cb(null, false); }
+      if (user.password != password) { return cb(null, false); }
+      return cb(null, user);
+    });
+  }));
+
+passport.serializeUser(function(user, cb) {
+  cb(null, user.id);
+});
+
+passport.deserializeUser(function(id, cb) {
+  Users.findById(id, function (err, user) {
+    if (err) { return cb(err); }
+    cb(null, user);
+  });
+});
+
+router.use(passport.initialize());
+router.use(passport.session());
+
+router.get('/login',
+  function(req, res){
+    res.render('login');
+  });
+
+router.post('/login', 
+  passport.authenticate('local', { failureRedirect: '/sign-up' }),
   function(req, res) {
-    res.redirect('/');
+    console.log("oh yes");
+    res.redirect('/summary');
   });
 
 module.exports = {router};
