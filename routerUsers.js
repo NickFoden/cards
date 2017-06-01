@@ -118,15 +118,15 @@ router.get('/', (req, res) => {
     .catch(err => console.log(err) && res.status(500).json({message: 'Internal server error'}));
 });
 
-const basicStrategy = new BasicStrategy(function(username, password, callback) {
+const basicStrategy = new BasicStrategy(function(email, password, callback) {
   let user;
   User
-    .findOne({username: username})
+    .findOne({email: email})
     .exec()
     .then(_user => {
       user = _user;
       if (!user) {
-        return callback(null, false, {message: 'Incorrect username'});
+        return callback(null, false, {message: 'Incorrect email'});
       }
       return user.validatePassword(password);
     })
