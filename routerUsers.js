@@ -89,7 +89,7 @@ router.post('/', (req, res) => {
 
 passport.use(new Strategy(
   function(email, password, cb) {
-    Users.findByEmail(email, function(err, user) {
+    Users.findOne({email: email}, {}, function(err, user) {
       if (err) { return cb(err); }
       if (!user) { return cb(null, false); }
       if (user.password != password) { return cb(null, false); }
@@ -120,7 +120,7 @@ router.post('/login',
   passport.authenticate('local', { failureRedirect: '/sign-up.html' }),
   function(req, res) {
     console.log("oh yes");
-    res.redirect('/summary');
+    res.redirect('/summary.html');
   });
 
 router.get('/logout',
