@@ -13,9 +13,6 @@ app.use(bodyParser.json());
 
 app.use('/cards/', routerCards);
 app.use('/users/', routerUsers);
-app.use('/login/', routerUsers);
-app.use('/logout/', routerUsers);
-
 
 let server;
 

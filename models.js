@@ -18,6 +18,19 @@ const userSchema = mongoose.Schema({
      } 
 );
 
+userSchema.statics.hashPassword = function(password) {
+  return bcrypt
+    .hash(password, 10)
+    .then(hash => hash);
+}
+
+userSchema.methods.validatePassword = function(password) {
+  return bcrypt
+    .compare(password, this.password)
+    .then(isValid => isValid);
+
+}
+
 const Card = mongoose.model('Card', cardSchema);
 const User = mongoose.model('User', userSchema);
 

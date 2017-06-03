@@ -15,7 +15,7 @@ const routerUsers = router;
 
 router.use(jsonParser);
 
-router.post('/users', (req, res) => {
+router.post('/', (req, res) => {
   console.log(req.body);
   if (!req.body) {
     return res.status(400).json({message: 'No request body'});
@@ -26,6 +26,7 @@ router.post('/users', (req, res) => {
   }
 
   let {email, password} = req.body;
+  console.log(email, password)
 
   if (typeof email !== 'string') {
     return res.status(422).json({message: 'Incorrect field type: email'});
@@ -112,11 +113,11 @@ router.use(passport.session());
 
 router.get('/login',
   function(req, res){
-    res.render('login');
+    res.redirect(200, '/new-card');
   });
 
-router.post('./login', 
-  passport.authenticate('local', { failureRedirect: '/sign-up' }),
+router.post('/login', 
+  passport.authenticate('local', { failureRedirect: '/sign-up.html' }),
   function(req, res) {
     console.log("oh yes");
     res.redirect('/summary');
