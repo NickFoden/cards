@@ -15,7 +15,7 @@ const routerUsers = router;
 
 router.use(jsonParser);
 
-router.post('/', (req, res) => {
+router.post('/users', (req, res) => {
   console.log(req.body);
   if (!req.body) {
     return res.status(400).json({message: 'No request body'});
@@ -115,11 +115,17 @@ router.get('/login',
     res.render('login');
   });
 
-router.post('/login', 
+router.post('./login', 
   passport.authenticate('local', { failureRedirect: '/sign-up' }),
   function(req, res) {
     console.log("oh yes");
     res.redirect('/summary');
+  });
+
+router.get('/logout',
+  function(req, res){
+    req.logout();
+    res.redirect('/');
   });
 
 module.exports = {router};
