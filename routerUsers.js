@@ -63,7 +63,6 @@ router.post('/', (req, res) => {
           message: 'Email already taken'
         });
       }
-      // if no existing user, hash password
       return User.hashPassword(password)
     })
     .then(hash => {
@@ -94,7 +93,7 @@ passport.use(new Strategy(
       if (user.password != password) { return cb(null, false); }
       return cb(null, user);
     });
-  }));
+}));
 
 passport.serializeUser(function(user, cb) {
   cb(null, user.id);
