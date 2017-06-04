@@ -115,11 +115,13 @@ router.get('/login',
   });
 
 router.post('/login', 
-  passport.authenticate('local', { failureRedirect: '/sign-up.html' }),
-  function(req, res) {
-    console.log("oh yes");
-    res.redirect('/summary.html');
-  });
+  passport.authenticate('local', { 
+    successRedirect: '../summary.html', 
+    failureRedirect: '../sign-up.html' 
+  }));
+  //function(req, res) {
+    //console.log("oh yes");
+  //});
 
 router.get('/logout',
   function(req, res){

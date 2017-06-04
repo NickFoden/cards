@@ -4,14 +4,17 @@ $(document).on('submit', "#login-form", function(e){
 
     existingUser.email = $("#email").val();
     existingUser.password = $("#password").val();
+    console.log(existingUser);
 
     $.ajax({
       type: "POST",
       url: "/users/login",
       data: JSON.stringify(existingUser),
       success: () => console.log("Get Success"),
-      dataType: "json",
+      dataType: 'json',
       contentType: "application/json"
     });
     document.getElementById("login-form").reset();
 });
+
+
