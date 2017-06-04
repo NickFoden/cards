@@ -14,7 +14,8 @@ const routerCards = router;
 
 router.use(jsonParser);
 
-router.get('/', (req, res) => {
+router.get('/',
+  /*passport.authenticate('basic', {session: true}),*/ (req, res) => {
   Card
     .find()
     .exec()
