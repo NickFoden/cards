@@ -86,7 +86,6 @@ router.post('/', (req, res) => {
     });
 });
 
-
 passport.use(new Strategy(
   function(email, password, cb) {
     Users.findOne({email: email}, {}, function(err, user) {
@@ -113,7 +112,7 @@ router.use(passport.session());
 
 router.get('/login',
   function(req, res){
-    res.redirect(200, '/new-card');
+    res.redirect(200, '/new-card.html');
   });
 
 router.post('/login', 

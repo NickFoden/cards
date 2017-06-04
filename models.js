@@ -31,6 +31,12 @@ userSchema.methods.validatePassword = function(password) {
 
 }
 
+userSchema.methods.apiRepr = function() {
+  return {
+    email: this.email || ''
+  };
+}
+
 const Card = mongoose.model('Card', cardSchema);
 const User = mongoose.model('User', userSchema);
 

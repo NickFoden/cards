@@ -7,7 +7,7 @@ $(document).on('submit', "#login-form", function(e){
 
     $.ajax({
       type: "POST",
-      url: "users/login",
+      url: "/users/login",
       data: JSON.stringify(existingUser),
       success: () => console.log("Get Success"),
       dataType: "json",
