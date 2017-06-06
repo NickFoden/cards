@@ -2,13 +2,13 @@ $(document).on('submit', "#login-form", function(e){
     e.preventDefault();
     var existingUser ={};
 
-    existingUser.email = $("#email").val();
+    existingUser.username = $("#email").val();
     existingUser.password = $("#password").val();
     console.log(existingUser);
 
     $.ajax({
       type: "POST",
-      url: "./users/login",
+      url: "/users/login",
       data: JSON.stringify(existingUser),
       success: () => {console.log("Get Success")},
       dataType: 'json',

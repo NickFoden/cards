@@ -14,8 +14,8 @@ const cardSchema = mongoose.Schema({
 
 
 const userSchema = mongoose.Schema({
-         "usernameField": {type: String, required: true, unique: true},
-         "passwordField": {type: String, required: true}
+         "username": {type: String, required: true, unique: true},
+         "password": {type: String, required: true}
      } 
 );
 
@@ -34,7 +34,7 @@ userSchema.methods.validatePassword = function(password) {
 
 userSchema.methods.apiRepr = function() {
   return {
-    usernameField: this.usernameField || ''
+    username: this.username || ''
   };
 }
 

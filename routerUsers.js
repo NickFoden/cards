@@ -31,20 +31,20 @@ router.post('/', (req, res) => {
     return res.status(400).json({message: 'No request body'});
   }
 
-  if (!('email' in req.body)) {
+  if (!('username' in req.body)) {
     return res.status(422).json({message: 'Missing field: email'});
   }
 
-  let {email, password} = req.body;
-  console.log(email, password)
+  let {username, password} = req.body;
+  console.log(username, password)
 
-  if (typeof email !== 'string') {
+  if (typeof username !== 'string') {
     return res.status(422).json({message: 'Incorrect field type: email'});
   }
 
-  email = email.trim();
+  username = username.trim();
 
-  if (email=== '') {
+  if (username === '') {
     return res.status(422).json({message: 'Incorrect field length: email'});
   }
 
@@ -63,7 +63,7 @@ router.post('/', (req, res) => {
   }
 
   return User
-    .find({email})
+    .find({username})
     .count()
     .exec()
     .then(count => {
@@ -78,7 +78,7 @@ router.post('/', (req, res) => {
     .then(hash => {
       return User
         .create({
-          email: email,
+          username: email,
           password: hash
         })
     })
@@ -96,8 +96,8 @@ router.post('/', (req, res) => {
 });
 
 passport.use(new Strategy(
-  function(usernameField, passwordField, cb) {
-    Users.findOne({usernameField: 'email'}, {}, function(err, user) {
+  function(username, password, cb) {
+    Users.findOne({username: 'email'}, {}, function(err, user) {
       if (err) { return cb(err); }
       if (!user) { return cb(null, false); }
       if (user.password != password) { return cb(null, false); }
@@ -116,9 +116,6 @@ passport.deserializeUser(function(id, cb) {
   });
 });
 
-router.use(passport.initialize());
-router.use(passport.session());
-
 router.get('/login',
   function(req, res){
     res.redirect(200, '/new-card.html');
@@ -127,9 +124,6 @@ router.get('/login',
 router.post('/login', passport.authenticate('local'), function(req, res) { 
    res.redirect('/summary.html')
   });
-  //function(req, res) {
-    //console.log("oh yes");
-  //});
 
 router.get('/logout',
   function(req, res){
