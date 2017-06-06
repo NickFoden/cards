@@ -6,6 +6,7 @@ const {router: routerCards} = require('./routerCards');
 const {router: routerUsers} = require('./routerUsers');
 mongoose.Promise = global.Promise;
 const {PORT, DATABASE_URL} = require('./config.js');
+
 const app = express();
 
 app.use(express.static('public'));

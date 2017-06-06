@@ -2,8 +2,8 @@ $(document).on('submit', "#new-user-form", function(e){
     e.preventDefault();
     var newUser ={};
 
-    newUser.email = $("#email").val();
-    newUser.password = $("#password").val();
+    newUser.usernameField = $("#email").val();
+    newUser.passwordField = $("#password").val();
 
     console.log(newUser);
     $.ajax({

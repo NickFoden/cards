@@ -10,10 +10,20 @@ mongoose.Promise = global.Promise;
 const {User} = require('./models.js');
 const {PORT, DATABASE_URL} = require('./config.js');
 const Strategy = require('passport-local').Strategy;
-
-const routerUsers = router;
+const cookieParser = require('cookie-parser');
 
 router.use(jsonParser);
+
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: false }));
+router.use(cookieParser());
+router.use(require('express-session')({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false
+}));
+router.use(passport.initialize());
+router.use(passport.session());
 
 router.post('/', (req, res) => {
   console.log(req.body);
@@ -86,8 +96,8 @@ router.post('/', (req, res) => {
 });
 
 passport.use(new Strategy(
-  function(email, password, cb) {
-    Users.findOne({email: email}, {}, function(err, user) {
+  function(usernameField, passwordField, cb) {
+    Users.findOne({usernameField: 'email'}, {}, function(err, user) {
       if (err) { return cb(err); }
       if (!user) { return cb(null, false); }
       if (user.password != password) { return cb(null, false); }
@@ -114,11 +124,9 @@ router.get('/login',
     res.redirect(200, '/new-card.html');
   });
 
-router.post('/login', 
-  passport.authenticate('local', { 
-    successRedirect: '../summary.html', 
-    failureRedirect: '../sign-up.html' 
-  }));
+router.post('/login', passport.authenticate('local'), function(req, res) { 
+   res.redirect('/summary.html')
+  });
   //function(req, res) {
     //console.log("oh yes");
   //});
