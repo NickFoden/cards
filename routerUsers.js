@@ -3,7 +3,6 @@ const app = express();
 const router = express.Router();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const jsonParser = require('body-parser').json();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 mongoose.Promise = global.Promise;
@@ -11,9 +10,6 @@ const {User} = require('./models.js');
 const {PORT, DATABASE_URL} = require('./config.js');
 const Strategy = require('passport-local').Strategy;
 const cookieParser = require('cookie-parser');
-const Users = require('./userdb.js')
-
-router.use(jsonParser);
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -26,28 +22,26 @@ router.use(require('express-session')({
 router.use(passport.initialize());
 router.use(passport.session());
 
-
-
 router.post('/', (req, res) => {
   console.log(req.body);
   if (!req.body) {
     return res.status(400).json({message: 'No request body'});
   }
 
-  if (!('username' in req.body)) {
+  if (!('email' in req.body)) {
     return res.status(422).json({message: 'Missing field: email'});
   }
 
-  let {username, password} = req.body;
-  console.log(username, password)
+  let {email, password} = req.body;
+  console.log(email, password)
 
-  if (typeof username !== 'string') {
+  if (typeof email !== 'string') {
     return res.status(422).json({message: 'Incorrect field type: email'});
   }
 
-  username = username.trim();
+  email = email.trim();
 
-  if (username === '') {
+  if (email=== '') {
     return res.status(422).json({message: 'Incorrect field length: email'});
   }
 
@@ -66,7 +60,7 @@ router.post('/', (req, res) => {
   }
 
   return User
-    .find({username})
+    .find({email})
     .count()
     .exec()
     .then(count => {
@@ -81,7 +75,7 @@ router.post('/', (req, res) => {
     .then(hash => {
       return User
         .create({
-          username: email,
+          email: email,
           password: hash
         })
     })
@@ -100,10 +94,13 @@ router.post('/', (req, res) => {
 
 passport.use(new Strategy(
   function(username, password, cb) {
-    Users.findByUsername({username: 'email'}, {}, function(err, user) {
+    User.findOne({'email': username}, function(err, user) {
       if (err) { return cb(err); }
-      if (!user) { return cb(null, false); }
-      if (user.password != password) { return cb(null, false); }
+      console.log('one');
+      if (!user) { return cb(null, false, {message: "incorrect username"}); }
+      console.log('two');
+      if (!User.validatePassword(password)) { return cb(null, false, {message: "incorrect password"}); }
+      console.log('three');
       return cb(null, user);
     });
 }));
@@ -113,7 +110,7 @@ passport.serializeUser(function(user, cb) {
 });
 
 passport.deserializeUser(function(id, cb) {
-  Users.findById(id, function (err, user) {
+  User.findById(id, function (err, user) {
     if (err) { return cb(err); }
     cb(null, user);
   });
@@ -125,6 +122,7 @@ router.get('/login',
   });
 
 router.post('/login', passport.authenticate('local'), function(req, res) { 
+  console.log(req.body);
    res.redirect('/summary.html')
   });
 

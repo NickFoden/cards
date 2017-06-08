@@ -2,7 +2,7 @@ $(document).on('submit', "#new-user-form", function(e){
     e.preventDefault();
     var newUser ={};
 
-    newUser.username = $("#email").val();
+    newUser.email = $("#email").val();
     newUser.password = $("#password").val();
 
     console.log(newUser);
