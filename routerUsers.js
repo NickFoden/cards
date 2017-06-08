@@ -11,6 +11,7 @@ const {User} = require('./models.js');
 const {PORT, DATABASE_URL} = require('./config.js');
 const Strategy = require('passport-local').Strategy;
 const cookieParser = require('cookie-parser');
+const Users = require('./userdb.js')
 
 router.use(jsonParser);
 
@@ -24,6 +25,8 @@ router.use(require('express-session')({
 }));
 router.use(passport.initialize());
 router.use(passport.session());
+
+
 
 router.post('/', (req, res) => {
   console.log(req.body);
@@ -97,7 +100,7 @@ router.post('/', (req, res) => {
 
 passport.use(new Strategy(
   function(username, password, cb) {
-    User.findByUsername({username: 'email'}, {}, function(err, user) {
+    Users.findByUsername({username: 'email'}, {}, function(err, user) {
       if (err) { return cb(err); }
       if (!user) { return cb(null, false); }
       if (user.password != password) { return cb(null, false); }
@@ -110,7 +113,7 @@ passport.serializeUser(function(user, cb) {
 });
 
 passport.deserializeUser(function(id, cb) {
-  User.findById(id, function (err, user) {
+  Users.findById(id, function (err, user) {
     if (err) { return cb(err); }
     cb(null, user);
   });
