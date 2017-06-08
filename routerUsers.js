@@ -97,7 +97,7 @@ router.post('/', (req, res) => {
 
 passport.use(new Strategy(
   function(username, password, cb) {
-    Users.findOne({username: 'email'}, {}, function(err, user) {
+    User.findByUsername({username: 'email'}, {}, function(err, user) {
       if (err) { return cb(err); }
       if (!user) { return cb(null, false); }
       if (user.password != password) { return cb(null, false); }
@@ -110,7 +110,7 @@ passport.serializeUser(function(user, cb) {
 });
 
 passport.deserializeUser(function(id, cb) {
-  Users.findById(id, function (err, user) {
+  User.findById(id, function (err, user) {
     if (err) { return cb(err); }
     cb(null, user);
   });
