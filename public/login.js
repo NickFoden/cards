@@ -1,4 +1,4 @@
-$(document).on('submit', "#login-form", function(e){
+/*$(document).on('submit', "#login-form", function(e){
     e.preventDefault();
     var existingUser ={};
 
@@ -15,6 +15,6 @@ $(document).on('submit', "#login-form", function(e){
       contentType: "application/json"
     });
     document.getElementById("login-form").reset();
-});
+});*/
 
 

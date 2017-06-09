@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="main.css">
-	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" href="/main.css">
+	<link rel="shortcut icon" href="/favicon.ico">
 	<title></title>
 </head>
 <body>
@@ -19,10 +19,10 @@
 	<div id="login-body">	
 		<div class="login-container">
 		<h2>Log In</h2>
-			<form id="login-form">	
+			<form id="login-form" method="post" action="/users/login">	
 				<div class="row">
 					<label class="form-label" for="user">Email</label>
-					<input class="form-input" type="email" placeholder="user email" id="email" required/><br>
+					<input class="form-input" value="boom@test.com" type="email" placeholder="user email" id="email" required/><br>
 				</div>	
 				<div class="row">
 					<label class="form-label" for="password">Password</label>
@@ -33,6 +33,6 @@
 		</div>
 	</div>	
 	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>	
-	<script type="text/javascript" src="login.js"></script>	
+	<script type="text/javascript" src="/login.js"></script>	
 </body>
 </html>

@@ -12,9 +12,8 @@ const cardSchema = mongoose.Schema({
      }
 );
 
-
 const userSchema = mongoose.Schema({
-         "username": {type: String, required: true, unique: true},
+         "email": {type: String, required: true, unique: true},
          "password": {type: String, required: true}
      } 
 );
@@ -26,10 +25,10 @@ userSchema.statics.hashPassword = function(password) {
 }
 
 userSchema.methods.validatePassword = function(password) {
+  console.log(password);
   return bcrypt
     .compare(password, this.password)
     .then(isValid => isValid);
-
 }
 
 userSchema.methods.apiRepr = function() {
