@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const jsonParser = require('body-parser').json();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const Strategy = require('passport-http').BasicStrategy;
 mongoose.Promise = global.Promise;
 const {Card} = require('./models.js');
 const {PORT, DATABASE_URL} = require('./config.js');
@@ -15,7 +16,7 @@ const routerCards = router;
 router.use(jsonParser);
 
 router.get('/',
-  /*passport.authenticate('basic', {session: true}),*/ (req, res) => {
+  passport.authenticate('basic', {session: true}), (req, res) => {
   Card
     .find()
     .exec()

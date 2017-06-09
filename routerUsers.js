@@ -121,9 +121,8 @@ router.get('/login',
     res.redirect(200, '/new-card.html');
   });
 
-router.post('/login', passport.authenticate('local'), function(req, res) { 
-  console.log(req.body);
-   res.redirect('/summary.html')
+router.post('/login', passport.authenticate('local', { failureRedirect: '/users/login' }), function(req, res) { 
+   res.redirect('/summary.html');
   });
 
 router.get('/logout',
