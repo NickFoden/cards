@@ -21,8 +21,8 @@ router.use(require('express-session')({
     resave: false,
     saveUninitialized: false
 }));
-//router.use(passport.initialize());
-//router.use(passport.session());
+router.use(passport.initialize());
+router.use(passport.session());
 
 router.post('/', (req, res) => {
   console.log(req.body);
@@ -96,14 +96,10 @@ router.post('/', (req, res) => {
 
 passport.use(new Strategy(
   function(email, password, cb) {
-    console.log("line99");
-    User.findOne({'email': email}, function(err, user) {
+    User.findOne({email: email}, function(err, user) {
       if (err) { return cb(err); }
-      console.log('one');
       if (!user) { return cb(null, false, {message: "incorrect username"}); }
-      console.log('two');
       if (!user.validatePassword(password)) { return cb(null, false, {message: "incorrect password"}); }
-      console.log('three');
       return cb(null, user);
     });
 }));
@@ -119,8 +115,8 @@ passport.deserializeUser(function(id, cb) {
   });
 });
 
-router.use(passport.initialize());
-router.use(passport.session());
+//router.use(passport.initialize());
+//router.use(passport.session());
 
 router.get('/login', 
   function(req, res){
