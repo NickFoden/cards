@@ -95,9 +95,9 @@ router.post('/', (req, res) => {
 });
 
 passport.use(new Strategy(
-  function(username, password, cb) {
+  function(email, password, cb) {
     console.log("line99");
-    User.findOne({'email': username}, function(err, user) {
+    User.findOne({'email': email}, function(err, user) {
       if (err) { return cb(err); }
       console.log('one');
       if (!user) { return cb(null, false, {message: "incorrect username"}); }
@@ -127,9 +127,11 @@ router.get('/login',
     res.sendFile(path.join(__dirname + '/public/login.html'));
   });
 
-router.post('/login', passport.authenticate('local', { successRedirect: '/summary.html', failureRedirect: '/login.html' }), function(req, res) { 
-   console.log("something");
-   res.redirect('/summary.html');
+router.post('/login', function(req, res, next) {
+  passport.authenticate('local', { 
+    successRedirect: '/summary.html', 
+    failureRedirect: '/sign-up.html' 
+  })(req, res, next);
   });
 
 router.get('/logout',
