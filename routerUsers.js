@@ -28,16 +28,16 @@ router.post('/', (req, res) => {
   if (!req.body) {
     return res.status(400).json({message: 'No request body'});
   }
-  if (!('email' in req.body)) {
-    return res.status(422).json({message: 'Missing field: email'});
+  if (!('username' in req.body)) {
+    return res.status(422).json({message: 'Missing field: username'});
   }
-  let {email, password} = req.body;
-  if (typeof email !== 'string') {
-    return res.status(422).json({message: 'Incorrect field type: email'});
+  let {username, password} = req.body;
+  if (typeof username !== 'string') {
+    return res.status(422).json({message: 'Incorrect field type: username'});
   }
-  email = email.trim();
-  if (email=== '') {
-    return res.status(422).json({message: 'Incorrect field length: email'});
+  username = username.trim();
+  if (username=== '') {
+    return res.status(422).json({message: 'Incorrect field length: username'});
   }
   if (!(password)) {
     return res.status(422).json({message: 'Missing field: password'});
@@ -50,14 +50,14 @@ router.post('/', (req, res) => {
     return res.status(422).json({message: 'Incorrect field length: password'});
   }
   return User
-    .find({email})
+    .find({username})
     .count()
     .exec()
     .then(count => {
       if (count > 0) {
         return Promise.reject({
           name: 'AuthenticationError',
-          message: 'Email already taken'
+          message: 'username already taken'
         });
       }
       return User.hashPassword(password)
@@ -65,7 +65,7 @@ router.post('/', (req, res) => {
     .then(hash => {
       return User
         .create({
-          email: email,
+          username: username,
           password: hash
         })
     })
@@ -82,8 +82,8 @@ router.post('/', (req, res) => {
 });
 
 passport.use(new Strategy(
-  function(email, password, cb) {
-    let query = {email:email};
+  function(username, password, cb) {
+    let query = {username:username};
     User.findOne(query, function(err, user) {
       if (err) { return cb(err); }
       if (!user) { return cb(null, false, {message: "incorrect username"}); }
@@ -111,9 +111,9 @@ router.get('/login',
 router.post('/login', function(req, res, next) {
   passport.authenticate('local', { 
     successRedirect: '/summary.html', 
-    failureRedirect: '/sign-up.html' 
+    failureRedirect: '/sign-up.html'
   })(req, res, next);
-  });
+});
 
 router.get('/logout',
   function(req, res){
