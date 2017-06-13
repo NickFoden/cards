@@ -4,8 +4,6 @@ $(document).on('submit', "#new-user-form", function(e){
 
     newUser.email = $("#email").val();
     newUser.password = $("#password").val();
-
-    console.log(newUser);
     $.ajax({
       type: "POST",
       url: "/users",

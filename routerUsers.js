@@ -1,14 +1,14 @@
 const express = require('express');
-const app = express();
 const router = express.Router();
+const app = express();
 const mongoose = require('mongoose');
+const Strategy = require('passport-local').Strategy;
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 mongoose.Promise = global.Promise;
 const {User} = require('./models.js');
 const {PORT, DATABASE_URL} = require('./config.js');
-const Strategy = require('passport-local').Strategy;
 const cookieParser = require('cookie-parser');
 
 const path = require('path');
@@ -25,42 +25,30 @@ router.use(passport.initialize());
 router.use(passport.session());
 
 router.post('/', (req, res) => {
-  console.log(req.body);
   if (!req.body) {
     return res.status(400).json({message: 'No request body'});
   }
-
   if (!('email' in req.body)) {
     return res.status(422).json({message: 'Missing field: email'});
   }
-
   let {email, password} = req.body;
-  console.log(email, password)
-
   if (typeof email !== 'string') {
     return res.status(422).json({message: 'Incorrect field type: email'});
   }
-
   email = email.trim();
-
   if (email=== '') {
     return res.status(422).json({message: 'Incorrect field length: email'});
   }
-
   if (!(password)) {
     return res.status(422).json({message: 'Missing field: password'});
   }
-
   if (typeof password !== 'string') {
     return res.status(422).json({message: 'Incorrect field type: password'});
   }
-
   password = password.trim();
-
   if (password === '') {
     return res.status(422).json({message: 'Incorrect field length: password'});
   }
-
   return User
     .find({email})
     .count()
@@ -82,7 +70,6 @@ router.post('/', (req, res) => {
         })
     })
     .then(user => {
-      console.log(user);
       return res.status(201).json(user.apiRepr());
     })
     .catch(err => {
@@ -96,7 +83,8 @@ router.post('/', (req, res) => {
 
 passport.use(new Strategy(
   function(email, password, cb) {
-    User.findOne({email: email}, function(err, user) {
+    let query = {email:email};
+    User.findOne(query, function(err, user) {
       if (err) { return cb(err); }
       if (!user) { return cb(null, false, {message: "incorrect username"}); }
       if (!user.validatePassword(password)) { return cb(null, false, {message: "incorrect password"}); }
@@ -114,9 +102,6 @@ passport.deserializeUser(function(id, cb) {
     cb(null, user);
   });
 });
-
-//router.use(passport.initialize());
-//router.use(passport.session());
 
 router.get('/login', 
   function(req, res){
