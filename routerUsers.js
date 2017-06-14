@@ -11,8 +11,6 @@ const {User} = require('./models.js');
 const {PORT, DATABASE_URL} = require('./config.js');
 const cookieParser = require('cookie-parser');
 
-const path = require('path');
-
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(cookieParser());

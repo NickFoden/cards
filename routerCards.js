@@ -15,13 +15,12 @@ const routerCards = router;
 
 router.use(jsonParser);
 
-router.get('/',
-  passport.authenticate('local', {session: true}), (req, res) => {
+router.get('/', (req, res) => {
   Card
     .find()
     .exec()
     .then(cards => {
-      res.status(200).json(cards);
+      res.status(200).json(cards), {user: req.user};
     })
     .catch(
       err => {
