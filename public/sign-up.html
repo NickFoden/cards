@@ -10,9 +10,9 @@
 		<ul>
 			<li><a href='index.html'>Welcome</a></li>
 			<li><a href='start.html'>Lets get started</a></li>
-			<li><a href='new-card.html'>Add a new card</a></li>
+			<li class="not-logged-in"><a href='new-card.html'>Add a new card</a></li>
 			<li><a href='summary.html'>Summary of questions</a></li>
-			<li><a href='login.html'>Log In</a></li>
+			<li class="not-logged-in"><a href='login.html'>Log In</a></li>
 			<li><a id='sign-up' href='sign-up.html'>Sign Up</a></li>
 		</ul>
 	</nav>
@@ -22,11 +22,11 @@
 			<form id="new-user-form">	
 				<div class="row">
 					<label class ="form-label" for="user">Email</label>
-					<input class ="form-input" type="email" placeholder="user email" id="username" required/><br>
+					<input class ="form-input" type="email" placeholder="user email" name="username" id="username" required/><br>
 				</div>	
 				<div class="row">
 					<label class ="form-label" for="password">Password</label>
-					<input class ="form-input" type="password" placeholder="password" id="password" required/><br>
+					<input class ="form-input" type="password" placeholder="password" name="password" id="password" required/><br>
 				</div>	
 				<button type="submit" value="Submit" id="sign-up-submit">Sign Up</button>
 			</form>

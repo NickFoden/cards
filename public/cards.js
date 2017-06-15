@@ -66,7 +66,7 @@ function displayCardQuestion(data){
 function displayCardAnswer(data){
   let resultElement = 
     `<div class="display-card-answer">
-    <h2><a href="${data.reference}" target="_blank">${data.answer}</a></h2>
+    <h2><a href="http://${data.reference}" target="_blank">${data.answer}</a></h2>
     </div><button id="next-card">Next</button>`;
     $('#answer-button').hide();
     $('#display').append(resultElement);
