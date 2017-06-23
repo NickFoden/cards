@@ -10,6 +10,7 @@ mongoose.Promise = global.Promise;
 const {User} = require('./models.js');
 const {PORT, DATABASE_URL} = require('./config.js');
 const cookieParser = require('cookie-parser');
+var session = require('express-session');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
